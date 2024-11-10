@@ -24,7 +24,9 @@ reserved = {
     'for': 'FOR',
     'import': 'IMPORT', 
     'return': 'RETURN',
-    'var': 'VAR'
+    'var': 'VAR',
+    'float64':'FLOAT64',
+    'float32':'FLOAT32',
 }
 
 
@@ -38,7 +40,16 @@ tokens = (
     'PLUS', 'MINUS', 'TIMES', 'DIV', 'MOD',
     'EQ', 'NEQ', 'LT', 'GT', 'LTOEQ', 'GTOEQ',
     'AND', 'OR', 'NOT', 'ASSIGN', 'PLUSA',
-    'MINUSA', 'TIMESA', 'DIVA', 'MODA'
+    'MINUSA', 'TIMESA', 'DIVA', 'MODA',
+    'RCORCHETE',
+    'LCORCHETE',
+    'RLLAVE',
+    'LLLAVE',
+    'RPARENTESIS',
+    'LPARENTESIS',
+    'COLON',
+    'DOT',
+    'SEMICOLON',
 ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
@@ -62,12 +73,25 @@ t_MINUSA = r'-='
 t_TIMESA = r'\*='
 t_DIVA = r'/='
 t_MODA = r'%='
-
+t_RCORCHETE = r'\]'
+t_LCORCHETE= r'\['
+t_RLLAVE=r'}'
+t_LLLAVE = r'{'
+t_RPARENTESIS=r'\)'
+t_LPARENTESIS = r'\('
+t_COLON = r':'
+t_DOT = r'\.'
+t_SEMICOLON = r';'
 
 # Definición de tokens para tipos básicos
 def t_BOOL(t):
     r'true|false'
     t.value = t.value == 'true'
+    return t
+
+def t_FLOAT(t):
+    r'-?\d+\.\d+'
+    t.value=float(t.value)
     return t
 
 def t_INT(t):
@@ -79,9 +103,9 @@ def t_STRING(t):
     r'"([^"\\]|\\["nt\\])*"'
     return t
 
-def t_FLOAT(t):
-    r'-?[0-9]+\.[0-9]+'
-    t.value=float(t.value)
+def t_VARIABLE(t):
+    r'[a-zA-Z_]\w*'
+    t.type=reserved.get(t.value,'VARIABLE')
     return t
 
 # Salto de línea
