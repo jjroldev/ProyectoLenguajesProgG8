@@ -30,13 +30,41 @@ reserved = {
 
 # Lista de nombres de tokens
 tokens = (
+    'VARIABLE',
+    'BOOL',
+    'STRING',
+    'INT',
+    'FLOAT',
+    'PLUS', 'MINUS', 'TIMES', 'DIV', 'MOD',
+    'EQ', 'NEQ', 'LT', 'GT', 'LTOEQ', 'GTOEQ',
+    'AND', 'OR', 'NOT', 'ASSIGN', 'PLUSA',
+    'MINUSA', 'TIMESA', 'DIVA', 'MODA'
 ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
-
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
 
 # Definición de tokens para tipos básicos
+def t_BOOL(t):
+    r'true|false'
+    t.value = t.value == 'true'
+    return t
 
+def t_INT(t):
+    r'-?[0-9]+'
+    t.value = int(t.value)
+    return t
+
+def t_STRING(t):
+    r'"([^"\\]|\\["nt\\])*"'
+    return t
+
+def t_FLOAT(t):
+    r'-?[0-9]+\.[0-9]+'
+    t.value=float(t.value)
+    return t
 
 # Salto de línea
 def t_newline(t):
