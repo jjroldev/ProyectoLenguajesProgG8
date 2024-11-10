@@ -3,8 +3,30 @@ import ply.lex as lex
 
 # Palabras reservadas de Golang
 reserved = {
-
+    'break': 'BREAK',
+    'default': 'DEFAULT',
+    'func': 'FUNC',
+    'interface': 'INTERFACE',
+    'select': 'SELECT', 
+    'case': 'CASE',
+    'defer': 'DEFER',
+    'go': 'GO',
+    'else': 'ELSE',
+    'goto': 'GOTO',
+    'package': 'PACKAGE',
+    'switch': 'SWITCH',
+    'const': 'CONST',
+    'fallthrough': 'FALLTHROUGH',
+    'if': 'IF',
+    'range': 'RANGE',
+    'type': 'TYPE',
+    'continue': 'CONTINUE',
+    'for': 'FOR',
+    'import': 'IMPORT', 
+    'return': 'RETURN',
+    'var': 'VAR'
 }
+
 
 # Lista de nombres de tokens
 tokens = (
