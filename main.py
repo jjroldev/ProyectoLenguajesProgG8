@@ -1,5 +1,7 @@
 import ply.yacc as yacc
 import ply.lex as lex
+from datetime import datetime
+import os
 
 # Palabras reservadas de Golang
 reserved = {
@@ -133,59 +135,37 @@ def t_error(t):
 # Construcción del lexer
 lexer = lex.lex()
 
-# Prueba del lexer
-data = '''
-package main
+def leer_archivo(nombre_archivo):
+    try:
+        with open(nombre_archivo, 'r') as archivo:
+            contenido = archivo.read()
+        return contenido
+    except FileNotFoundError:
+        print(f"El archivo {nombre_archivo} no fue encontrado.")
+        return ""
 
-import (
-    "fmt"
-)
+def generar_log(tokens, usuario_git):
+    fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
+    if not os.path.exists("Logs"):
+        os.makedirs("Logs")
+    nombre_log = f"Logs/lexico-{usuario_git}-{fecha_hora}.txt"
+    with open(nombre_log, 'w') as log:
+        for token in tokens:
+            log.write(f"{token}\n")
+    print(f"Log generado: {nombre_log}")
 
-func main() {
-    var a int = 10
-    var b float64 = 20.5
-    var c bool = true
-    var name string = "LexerTest"
-    const d int = 100
+def procesar_archivo(nombre_archivo, usuario_git):
+    data = leer_archivo(nombre_archivo)
+    if not data:
+        return
+    lexer.input(data)
+    tokens = []
+    #TOKENIZAR
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        tokens.append(tok)
+    generar_log(tokens, usuario_git)
 
-    a += 5
-    b -= 2.5
-    a *= 2
-    b /= 2.0
-    a %= 3
-
-    if a == 10 && b > 10.0 || !c {
-        fmt.Println("Operador lógico AND y OR")
-    } else if a != 5 || b <= 15.5 {
-        fmt.Println("Operador NOT y comparación")
-    }
-
-    for i := 0; i < 5; i++ {
-        fmt.Println(i)
-    }
-
-    switch name {
-    case "LexerTest":
-        fmt.Println("Nombre correcto")
-    case "Test":
-        fmt.Println("Nombre alternativo")
-    default:
-        fmt.Println("Nombre desconocido")
-    }
-
-    c = false
-    if !c && (a < 10 || b >= 20.0) {
-        fmt.Println("Condición final")
-    }
-}
-'''
-
-# Entrada para el lexer
-lexer.input(data)
-
-# Tokenización
-while True:
-    tok = lexer.token()
-    if not tok:
-        break
-    print(tok)
+procesar_archivo("algoritmo1.go", "jjroldev")
