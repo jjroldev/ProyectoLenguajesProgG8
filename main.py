@@ -45,6 +45,24 @@ tokens = (
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
+t_DIV = r'/'
+t_MOD = r'%'
+t_EQ = r'=='
+t_NEQ = r'!='
+t_LT = r'<'
+t_GT = r'>'
+t_LTOEQ = r'<='
+t_GTOEQ = r'>='
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
+t_ASSIGN = r'='
+t_PLUSA = r'\+='
+t_MINUSA = r'-='
+t_TIMESA = r'\*='
+t_DIVA = r'/='
+t_MODA = r'%='
+
 
 # Definición de tokens para tipos básicos
 def t_BOOL(t):
