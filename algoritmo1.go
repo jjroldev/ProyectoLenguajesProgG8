@@ -1,9 +1,11 @@
 package main
 
-import (
-    "fmt"
-)
-
+import "fmt"
+//comentario 1 linea^^&&&*
+/*linea1
+linea2
+linea3&*(*)
+*/
 func main() {
     var a int = 10
     var b float64 = 20.5
@@ -23,9 +25,14 @@ func main() {
         fmt.Println("Operador NOT y comparación")
     }
 
-    for i := 0; i < 5; i++ {
-        fmt.Println(i)
-    }
+    a = a & 5
+    b = b | 3
+
+    a <<= 2
+    b >>= 1
+
+    a++
+    b--
 
     switch name {
     case "LexerTest":
@@ -36,8 +43,18 @@ func main() {
         fmt.Println("Nombre desconocido")
     }
 
+    for i := 0; i < 5; i++ {
+        fmt.Println(i)
+    }
+
     c = false
     if !c && (a < 10 || b >= 20.0) {
         fmt.Println("Condición final")
     }
+
+    if a == 10 {
+        fmt.Println("A es igual a 10")
+    }
+
+    fmt.Println(a + int(b))
 }

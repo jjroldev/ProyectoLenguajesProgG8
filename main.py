@@ -60,6 +60,21 @@ tokens = (
     'DOT',
     'SEMICOLON',
     'DECLARE_ASSIGN',
+    'INCREMENTO',
+    'DECREMENTO',
+    'BITWISEAND',
+    'BITWISEOR',
+    'BITWISEXOR',
+    'BITWISECLEAR',
+    'SHIFTLEFT',
+    'SHIFTRIGHT',
+    'BITWISEANDASSIGN',
+    'BITWISEORASSIGN',
+    'BITWISEXORASSIGN',
+    'SHIFTLEFTASSIGN',
+    'SHIFTRIGHTASSIGN',
+    'ONELINECOMMENT',
+    'MULTILINECOMMENT',
 ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
@@ -93,6 +108,19 @@ t_COLON = r':'
 t_DOT = r'\.'
 t_SEMICOLON = r';'
 t_DECLARE_ASSIGN = r':='
+t_INCREMENTO = r'\+\+'
+t_DECREMENTO = r'--'
+t_BITWISEAND = r'&'
+t_BITWISEOR = r'\|'
+t_BITWISEXOR = r'\^'
+t_BITWISECLEAR = r'&\^'
+t_SHIFTLEFT = r'<<'
+t_SHIFTRIGHT = r'>>'
+t_BITWISEANDASSIGN = r'&='
+t_BITWISEORASSIGN = r'\|='
+t_BITWISEXORASSIGN = r'\^='
+t_SHIFTLEFTASSIGN = r'<<='
+t_SHIFTRIGHTASSIGN = r'>>='
 
 # Definición de tokens para tipos básicos
 def t_BOOL(t):
@@ -117,6 +145,14 @@ def t_STRING(t):
 def t_VARIABLE(t):
     r'[a-zA-Z_]\w*'
     t.type=reserved.get(t.value,'VARIABLE')
+    return t
+
+def t_ONELINECOMMENT(t):
+    r'//.*'
+    return t
+
+def t_MULTILINECOMMENT(t):
+    r'\/\*((?!\/\*)[\s\S])*\*\/'
     return t
 
 # Salto de línea
