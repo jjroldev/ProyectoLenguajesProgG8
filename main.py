@@ -27,6 +27,13 @@ reserved = {
     'var': 'VAR',
     'float64':'FLOAT64',
     'float32':'FLOAT32',
+    'Println':'PRINTLN',
+    'Print':'PRINT',
+    'Printf':'PRINTF',
+    'Sprint':'SPRINT',
+    'Sprintf':'SPRINTF',
+    'Sprintln':'SPRINTLN',
+    'main':'MAIN'
 }
 
 
@@ -50,6 +57,7 @@ tokens = (
     'COLON',
     'DOT',
     'SEMICOLON',
+    'DECLARE_ASSIGN',
 ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
@@ -82,6 +90,7 @@ t_LPARENTESIS = r'\('
 t_COLON = r':'
 t_DOT = r'\.'
 t_SEMICOLON = r';'
+t_DECLARE_ASSIGN = r':='
 
 # Definición de tokens para tipos básicos
 def t_BOOL(t):
@@ -126,6 +135,49 @@ lexer = lex.lex()
 
 # Prueba del lexer
 data = '''
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var a int = 10
+    var b float64 = 20.5
+    var c bool = true
+    var name string = "LexerTest"
+    const d int = 100
+
+    a += 5
+    b -= 2.5
+    a *= 2
+    b /= 2.0
+    a %= 3
+
+    if a == 10 && b > 10.0 || !c {
+        fmt.Println("Operador lógico AND y OR")
+    } else if a != 5 || b <= 15.5 {
+        fmt.Println("Operador NOT y comparación")
+    }
+
+    for i := 0; i < 5; i++ {
+        fmt.Println(i)
+    }
+
+    switch name {
+    case "LexerTest":
+        fmt.Println("Nombre correcto")
+    case "Test":
+        fmt.Println("Nombre alternativo")
+    default:
+        fmt.Println("Nombre desconocido")
+    }
+
+    c = false
+    if !c && (a < 10 || b >= 20.0) {
+        fmt.Println("Condición final")
+    }
+}
 '''
 
 # Entrada para el lexer
