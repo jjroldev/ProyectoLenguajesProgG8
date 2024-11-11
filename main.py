@@ -59,6 +59,7 @@ tokens = (
     'COLON',
     'DOT',
     'SEMICOLON',
+    'COMMA',
     'DECLARE_ASSIGN',
     'INCREMENTO',
     'DECREMENTO',
@@ -75,6 +76,8 @@ tokens = (
     'SHIFTRIGHTASSIGN',
     'ONELINECOMMENT',
     'MULTILINECOMMENT',
+    'ARRAY',
+    'SLICE'
 ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
@@ -107,6 +110,7 @@ t_LPARENTESIS = r'\('
 t_COLON = r':'
 t_DOT = r'\.'
 t_SEMICOLON = r';'
+t_COMMA = r','
 t_DECLARE_ASSIGN = r':='
 t_INCREMENTO = r'\+\+'
 t_DECREMENTO = r'--'
@@ -123,6 +127,14 @@ t_SHIFTLEFTASSIGN = r'<<='
 t_SHIFTRIGHTASSIGN = r'>>='
 
 # Definición de tokens para tipos básicos
+
+def t_ARRAY(t):
+    r'\[\d+\](int|float32|float64|string|bool|byte|rune|complex64|complex128|uintptr|any|error)'
+    return t
+def t_SLICE(t):
+    r'\[\](int|float32|float64|string|bool|byte|rune|complex64|complex128|uintptr|any|error)'
+    return t
+
 def t_BOOL(t):
     r'true|false'
     t.value = t.value == 'true'
@@ -204,4 +216,4 @@ def procesar_archivo(nombre_archivo, usuario_git):
         tokens.append(tok)
     generar_log(tokens, usuario_git)
 
-procesar_archivo("algoritmo1.go", "jjroldev")
+procesar_archivo("algoritmo2.go", "JoseMurillo2711")
