@@ -18,7 +18,7 @@ precedence = (
 
 # Obtener fecha y usuario para logs
 fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
-usuario_git = "JoseMurillo2711"
+usuario_git = "jjroldev"
 
 # Crear carpeta de logs si no existe
 if not os.path.exists("Logs"):

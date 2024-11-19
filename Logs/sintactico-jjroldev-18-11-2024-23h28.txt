@@ -1,0 +1,28 @@
+[RESULT] ['print', 10]
+[RESULT] ['print', 20]
+[ERROR] Syntax error at EOF
+[RESULT] None
+[RESULT] ['print', 'x']
+[RESULT] [('declare_assign', 'x', 10)]
+[ERROR] Syntax error at token INT, line 41
+[RESULT] None
+[RESULT] ['print', ('*', 10, 2)]
+[ERROR] Syntax error at token INT, line 41
+[RESULT] None
+[RESULT] ['print', ('+', 40, 23)]
+[RESULT] ['println', 'kld']
+[ERROR] Syntax error at token COMMA, line 41
+[RESULT] None
+[RESULT] ['int']
+[RESULT] [504]
+[RESULT] [28392]
+[RESULT] ['x']
+[ERROR] Syntax error at EOF
+[RESULT] None
+[ERROR] Syntax error at EOF
+[RESULT] None
+[RESULT] ['float']
+[ERROR] Syntax error at token EQUAL, line 41
+[RESULT] [19]
+[ERROR] Syntax error at token VARIABLE, line 41
+[RESULT] [10]
