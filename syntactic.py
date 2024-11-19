@@ -67,3 +67,81 @@ def p_data_structure_declaration(p):
     p[0] = ('array', p[2])
 
 # Expresiones
+
+def p_expression(p):
+    '''expression : expression PLUS expression
+                  | expression MINUS expression
+                  | expression TIMES expression
+                  | expression DIV expression
+                  | expression MOD expression
+                  | expression AND expression
+                  | expression OR expression
+                  | expression EQ expression
+                  | expression NEQ expression
+                  | expression LT expression
+                  | expression GT expression
+                  | expression LTOEQ expression
+                  | expression GTOEQ expression'''
+    p[0] = (p[2], p[1], p[3])
+
+def p_expression_paren(p):
+    '''expression : LPARENTESIS expression RPARENTESIS'''
+    p[0] = p[2]
+
+def p_expression_unary(p):
+    '''expression : MINUS expression %prec NOT
+                  | NOT expression'''
+    p[0] = (p[1], p[2])
+
+def p_expression_term(p):
+    '''expression : INT
+                  | FLOAT
+                  | STRING
+                  | BOOL
+                  | VARIABLE'''
+    p[0] = p[1]
+
+def p_expression_list(p):
+    '''expression_list : expression
+                       | expression_list COMMA expression'''
+    p[0] = [p[1]] if len(p) == 2 else p[1] + [p[3]]
+
+# Manejo de errores
+def p_error(p):
+    if p:
+        error_message = f"Syntax error at token {p.type}, line {p.lineno}"
+    else:
+        error_message = "Syntax error at EOF"
+    log_error(error_message)
+    print(error_message)
+
+# Generar logs de errores
+def log_error(error_message):
+    fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
+    usuario_git = "jjroldev"
+    if not os.path.exists("Logs"):
+        os.makedirs("Logs")
+    log_filename = f"Logs/sintactico-{usuario_git}-{fecha_hora}.txt"
+    with open(log_filename, 'a') as log_file:
+        log_file.write(f"{error_message}\n")
+    print(f"Error log generado: {log_filename}")
+
+# Construcción del parser
+parser = yacc.yacc()
+
+# Probar el parser
+def test_parser():
+    while True:
+        try:
+            s = input('GoParser > ')
+        except EOFError:
+            break
+        if not s:
+            continue
+        try:
+            result = parser.parse(s)
+            print(result)
+        except Exception as e:
+            print(f"Error durante el análisis: {e}")
+
+test_parser()
