@@ -1,0 +1,2855 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    APPEND
+    BITWISEAND
+    BITWISEANDASSIGN
+    BITWISECLEAR
+    BITWISEOR
+    BITWISEORASSIGN
+    BITWISEXOR
+    BITWISEXORASSIGN
+    BREAK
+    CASE
+    COLON
+    CONST
+    CONTINUE
+    DECREMENTO
+    DEFAULT
+    DEFER
+    DIVA
+    DOT
+    ELSE
+    ERROR
+    FALLTHROUGH
+    FLOAT32
+    FLOAT64
+    FOR
+    FUNC
+    GO
+    GOTO
+    IF
+    IMPORT
+    INCREMENTO
+    INTERFACE
+    LLLAVE
+    MAIN
+    MINUSA
+    MODA
+    MULTILINECOMMENT
+    ONELINECOMMENT
+    PACKAGE
+    PLUSA
+    PRINTF
+    RANGE
+    RETURN
+    RLLAVE
+    SELECT
+    SEMICOLON
+    SHIFTLEFT
+    SHIFTLEFTASSIGN
+    SHIFTRIGHT
+    SHIFTRIGHTASSIGN
+    SLICE
+    SPRINT
+    SPRINTF
+    SPRINTLN
+    SWITCH
+    TIMESA
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement_list statement
+Rule 4     statement -> print_statement
+Rule 5     statement -> input_statement
+Rule 6     statement -> expression_statement
+Rule 7     statement -> variable_declaration
+Rule 8     statement -> variable_assignment
+Rule 9     statement -> data_structure_declaration
+Rule 10    variable_declaration -> VAR VARIABLE TYPE EQUAL expression
+Rule 11    variable_declaration -> VARIABLE DECLARE_ASSIGN expression
+Rule 12    variable_assignment -> VARIABLE ASSIGN expression
+Rule 13    print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS
+Rule 14    print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS
+Rule 15    input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS
+Rule 16    expression_statement -> expression
+Rule 17    data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY
+Rule 18    expression -> expression PLUS expression
+Rule 19    expression -> expression MINUS expression
+Rule 20    expression -> expression TIMES expression
+Rule 21    expression -> expression DIV expression
+Rule 22    expression -> expression MOD expression
+Rule 23    expression -> expression AND expression
+Rule 24    expression -> expression OR expression
+Rule 25    expression -> expression EQ expression
+Rule 26    expression -> expression NEQ expression
+Rule 27    expression -> expression LT expression
+Rule 28    expression -> expression GT expression
+Rule 29    expression -> expression LTOEQ expression
+Rule 30    expression -> expression GTOEQ expression
+Rule 31    expression -> LPARENTESIS expression RPARENTESIS
+Rule 32    expression -> MINUS expression
+Rule 33    expression -> NOT expression
+Rule 34    expression -> INT
+Rule 35    expression -> FLOAT
+Rule 36    expression -> STRING
+Rule 37    expression -> BOOL
+Rule 38    expression -> VARIABLE
+Rule 39    expression_list -> expression
+Rule 40    expression_list -> expression_list COMMA expression
+
+Terminals, with rules where they appear
+
+AND                  : 23
+APPEND               : 
+ARRAY                : 17
+ASSIGN               : 12 15 17
+BITWISEAND           : 
+BITWISEANDASSIGN     : 
+BITWISECLEAR         : 
+BITWISEOR            : 
+BITWISEORASSIGN      : 
+BITWISEXOR           : 
+BITWISEXORASSIGN     : 
+BOOL                 : 37
+BREAK                : 
+CASE                 : 
+COLON                : 
+COMMA                : 40
+CONST                : 
+CONTINUE             : 
+DECLARE_ASSIGN       : 11
+DECREMENTO           : 
+DEFAULT              : 
+DEFER                : 
+DIV                  : 21
+DIVA                 : 
+DOT                  : 
+ELSE                 : 
+EQ                   : 25
+EQUAL                : 10
+ERROR                : 
+FALLTHROUGH          : 
+FLOAT                : 35
+FLOAT32              : 
+FLOAT64              : 
+FOR                  : 
+FUNC                 : 
+GO                   : 
+GOTO                 : 
+GT                   : 28
+GTOEQ                : 30
+IF                   : 
+IMPORT               : 
+INCREMENTO           : 
+INT                  : 34
+INTERFACE            : 
+LCORCHETE            : 17
+LLLAVE               : 
+LPARENTESIS          : 13 14 15 31
+LT                   : 27
+LTOEQ                : 29
+MAIN                 : 
+MINUS                : 19 32
+MINUSA               : 
+MOD                  : 22
+MODA                 : 
+MULTILINECOMMENT     : 
+NEQ                  : 26
+NOT                  : 33
+ONELINECOMMENT       : 
+OR                   : 24
+PACKAGE              : 
+PLUS                 : 18
+PLUSA                : 
+PRINT                : 14
+PRINTF               : 
+PRINTLN              : 13
+RANGE                : 
+RCORCHETE            : 17
+RETURN               : 
+RLLAVE               : 
+RPARENTESIS          : 13 14 15 31
+SCAN                 : 15
+SELECT               : 
+SEMICOLON            : 
+SHIFTLEFT            : 
+SHIFTLEFTASSIGN      : 
+SHIFTRIGHT           : 
+SHIFTRIGHTASSIGN     : 
+SLICE                : 
+SPRINT               : 
+SPRINTF              : 
+SPRINTLN             : 
+STRING               : 36
+SWITCH               : 
+TIMES                : 20
+TIMESA               : 
+TYPE                 : 10
+VAR                  : 10 17
+VARIABLE             : 10 11 12 15 17 38
+error                : 
+
+Nonterminals, with rules where they appear
+
+data_structure_declaration : 9
+expression           : 10 11 12 16 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 32 33 39 40
+expression_list      : 13 14 40
+expression_statement : 6
+input_statement      : 5
+print_statement      : 4
+program              : 0
+statement            : 2 3
+statement_list       : 1 3
+variable_assignment  : 8
+variable_declaration : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . print_statement
+    (5) statement -> . input_statement
+    (6) statement -> . expression_statement
+    (7) statement -> . variable_declaration
+    (8) statement -> . variable_assignment
+    (9) statement -> . data_structure_declaration
+    (13) print_statement -> . PRINTLN LPARENTESIS expression_list RPARENTESIS
+    (14) print_statement -> . PRINT LPARENTESIS expression_list RPARENTESIS
+    (15) input_statement -> . VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS
+    (16) expression_statement -> . expression
+    (10) variable_declaration -> . VAR VARIABLE TYPE EQUAL expression
+    (11) variable_declaration -> . VARIABLE DECLARE_ASSIGN expression
+    (12) variable_assignment -> . VARIABLE ASSIGN expression
+    (17) data_structure_declaration -> . VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    PRINTLN         shift and go to state 10
+    PRINT           shift and go to state 12
+    VARIABLE        shift and go to state 13
+    VAR             shift and go to state 15
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    print_statement                shift and go to state 4
+    input_statement                shift and go to state 5
+    expression_statement           shift and go to state 6
+    variable_declaration           shift and go to state 7
+    variable_assignment            shift and go to state 8
+    data_structure_declaration     shift and go to state 9
+    expression                     shift and go to state 14
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . print_statement
+    (5) statement -> . input_statement
+    (6) statement -> . expression_statement
+    (7) statement -> . variable_declaration
+    (8) statement -> . variable_assignment
+    (9) statement -> . data_structure_declaration
+    (13) print_statement -> . PRINTLN LPARENTESIS expression_list RPARENTESIS
+    (14) print_statement -> . PRINT LPARENTESIS expression_list RPARENTESIS
+    (15) input_statement -> . VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS
+    (16) expression_statement -> . expression
+    (10) variable_declaration -> . VAR VARIABLE TYPE EQUAL expression
+    (11) variable_declaration -> . VARIABLE DECLARE_ASSIGN expression
+    (12) variable_assignment -> . VARIABLE ASSIGN expression
+    (17) data_structure_declaration -> . VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    PRINTLN         shift and go to state 10
+    PRINT           shift and go to state 12
+    VARIABLE        shift and go to state 13
+    VAR             shift and go to state 15
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+
+    statement                      shift and go to state 22
+    print_statement                shift and go to state 4
+    input_statement                shift and go to state 5
+    expression_statement           shift and go to state 6
+    variable_declaration           shift and go to state 7
+    variable_assignment            shift and go to state 8
+    data_structure_declaration     shift and go to state 9
+    expression                     shift and go to state 14
+
+state 3
+
+    (2) statement_list -> statement .
+
+    PRINTLN         reduce using rule 2 (statement_list -> statement .)
+    PRINT           reduce using rule 2 (statement_list -> statement .)
+    VARIABLE        reduce using rule 2 (statement_list -> statement .)
+    VAR             reduce using rule 2 (statement_list -> statement .)
+    LPARENTESIS     reduce using rule 2 (statement_list -> statement .)
+    MINUS           reduce using rule 2 (statement_list -> statement .)
+    NOT             reduce using rule 2 (statement_list -> statement .)
+    INT             reduce using rule 2 (statement_list -> statement .)
+    FLOAT           reduce using rule 2 (statement_list -> statement .)
+    STRING          reduce using rule 2 (statement_list -> statement .)
+    BOOL            reduce using rule 2 (statement_list -> statement .)
+    $end            reduce using rule 2 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> print_statement .
+
+    PRINTLN         reduce using rule 4 (statement -> print_statement .)
+    PRINT           reduce using rule 4 (statement -> print_statement .)
+    VARIABLE        reduce using rule 4 (statement -> print_statement .)
+    VAR             reduce using rule 4 (statement -> print_statement .)
+    LPARENTESIS     reduce using rule 4 (statement -> print_statement .)
+    MINUS           reduce using rule 4 (statement -> print_statement .)
+    NOT             reduce using rule 4 (statement -> print_statement .)
+    INT             reduce using rule 4 (statement -> print_statement .)
+    FLOAT           reduce using rule 4 (statement -> print_statement .)
+    STRING          reduce using rule 4 (statement -> print_statement .)
+    BOOL            reduce using rule 4 (statement -> print_statement .)
+    $end            reduce using rule 4 (statement -> print_statement .)
+
+
+state 5
+
+    (5) statement -> input_statement .
+
+    PRINTLN         reduce using rule 5 (statement -> input_statement .)
+    PRINT           reduce using rule 5 (statement -> input_statement .)
+    VARIABLE        reduce using rule 5 (statement -> input_statement .)
+    VAR             reduce using rule 5 (statement -> input_statement .)
+    LPARENTESIS     reduce using rule 5 (statement -> input_statement .)
+    MINUS           reduce using rule 5 (statement -> input_statement .)
+    NOT             reduce using rule 5 (statement -> input_statement .)
+    INT             reduce using rule 5 (statement -> input_statement .)
+    FLOAT           reduce using rule 5 (statement -> input_statement .)
+    STRING          reduce using rule 5 (statement -> input_statement .)
+    BOOL            reduce using rule 5 (statement -> input_statement .)
+    $end            reduce using rule 5 (statement -> input_statement .)
+
+
+state 6
+
+    (6) statement -> expression_statement .
+
+    PRINTLN         reduce using rule 6 (statement -> expression_statement .)
+    PRINT           reduce using rule 6 (statement -> expression_statement .)
+    VARIABLE        reduce using rule 6 (statement -> expression_statement .)
+    VAR             reduce using rule 6 (statement -> expression_statement .)
+    LPARENTESIS     reduce using rule 6 (statement -> expression_statement .)
+    MINUS           reduce using rule 6 (statement -> expression_statement .)
+    NOT             reduce using rule 6 (statement -> expression_statement .)
+    INT             reduce using rule 6 (statement -> expression_statement .)
+    FLOAT           reduce using rule 6 (statement -> expression_statement .)
+    STRING          reduce using rule 6 (statement -> expression_statement .)
+    BOOL            reduce using rule 6 (statement -> expression_statement .)
+    $end            reduce using rule 6 (statement -> expression_statement .)
+
+
+state 7
+
+    (7) statement -> variable_declaration .
+
+    PRINTLN         reduce using rule 7 (statement -> variable_declaration .)
+    PRINT           reduce using rule 7 (statement -> variable_declaration .)
+    VARIABLE        reduce using rule 7 (statement -> variable_declaration .)
+    VAR             reduce using rule 7 (statement -> variable_declaration .)
+    LPARENTESIS     reduce using rule 7 (statement -> variable_declaration .)
+    MINUS           reduce using rule 7 (statement -> variable_declaration .)
+    NOT             reduce using rule 7 (statement -> variable_declaration .)
+    INT             reduce using rule 7 (statement -> variable_declaration .)
+    FLOAT           reduce using rule 7 (statement -> variable_declaration .)
+    STRING          reduce using rule 7 (statement -> variable_declaration .)
+    BOOL            reduce using rule 7 (statement -> variable_declaration .)
+    $end            reduce using rule 7 (statement -> variable_declaration .)
+
+
+state 8
+
+    (8) statement -> variable_assignment .
+
+    PRINTLN         reduce using rule 8 (statement -> variable_assignment .)
+    PRINT           reduce using rule 8 (statement -> variable_assignment .)
+    VARIABLE        reduce using rule 8 (statement -> variable_assignment .)
+    VAR             reduce using rule 8 (statement -> variable_assignment .)
+    LPARENTESIS     reduce using rule 8 (statement -> variable_assignment .)
+    MINUS           reduce using rule 8 (statement -> variable_assignment .)
+    NOT             reduce using rule 8 (statement -> variable_assignment .)
+    INT             reduce using rule 8 (statement -> variable_assignment .)
+    FLOAT           reduce using rule 8 (statement -> variable_assignment .)
+    STRING          reduce using rule 8 (statement -> variable_assignment .)
+    BOOL            reduce using rule 8 (statement -> variable_assignment .)
+    $end            reduce using rule 8 (statement -> variable_assignment .)
+
+
+state 9
+
+    (9) statement -> data_structure_declaration .
+
+    PRINTLN         reduce using rule 9 (statement -> data_structure_declaration .)
+    PRINT           reduce using rule 9 (statement -> data_structure_declaration .)
+    VARIABLE        reduce using rule 9 (statement -> data_structure_declaration .)
+    VAR             reduce using rule 9 (statement -> data_structure_declaration .)
+    LPARENTESIS     reduce using rule 9 (statement -> data_structure_declaration .)
+    MINUS           reduce using rule 9 (statement -> data_structure_declaration .)
+    NOT             reduce using rule 9 (statement -> data_structure_declaration .)
+    INT             reduce using rule 9 (statement -> data_structure_declaration .)
+    FLOAT           reduce using rule 9 (statement -> data_structure_declaration .)
+    STRING          reduce using rule 9 (statement -> data_structure_declaration .)
+    BOOL            reduce using rule 9 (statement -> data_structure_declaration .)
+    $end            reduce using rule 9 (statement -> data_structure_declaration .)
+
+
+state 10
+
+    (13) print_statement -> PRINTLN . LPARENTESIS expression_list RPARENTESIS
+
+    LPARENTESIS     shift and go to state 23
+
+
+state 11
+
+    (31) expression -> LPARENTESIS . expression RPARENTESIS
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 24
+
+state 12
+
+    (14) print_statement -> PRINT . LPARENTESIS expression_list RPARENTESIS
+
+    LPARENTESIS     shift and go to state 26
+
+
+state 13
+
+    (15) input_statement -> VARIABLE . ASSIGN SCAN LPARENTESIS RPARENTESIS
+    (11) variable_declaration -> VARIABLE . DECLARE_ASSIGN expression
+    (12) variable_assignment -> VARIABLE . ASSIGN expression
+    (38) expression -> VARIABLE .
+
+    ASSIGN          shift and go to state 27
+    DECLARE_ASSIGN  shift and go to state 28
+    PLUS            reduce using rule 38 (expression -> VARIABLE .)
+    MINUS           reduce using rule 38 (expression -> VARIABLE .)
+    TIMES           reduce using rule 38 (expression -> VARIABLE .)
+    DIV             reduce using rule 38 (expression -> VARIABLE .)
+    MOD             reduce using rule 38 (expression -> VARIABLE .)
+    AND             reduce using rule 38 (expression -> VARIABLE .)
+    OR              reduce using rule 38 (expression -> VARIABLE .)
+    EQ              reduce using rule 38 (expression -> VARIABLE .)
+    NEQ             reduce using rule 38 (expression -> VARIABLE .)
+    LT              reduce using rule 38 (expression -> VARIABLE .)
+    GT              reduce using rule 38 (expression -> VARIABLE .)
+    LTOEQ           reduce using rule 38 (expression -> VARIABLE .)
+    GTOEQ           reduce using rule 38 (expression -> VARIABLE .)
+    PRINTLN         reduce using rule 38 (expression -> VARIABLE .)
+    PRINT           reduce using rule 38 (expression -> VARIABLE .)
+    VARIABLE        reduce using rule 38 (expression -> VARIABLE .)
+    VAR             reduce using rule 38 (expression -> VARIABLE .)
+    LPARENTESIS     reduce using rule 38 (expression -> VARIABLE .)
+    NOT             reduce using rule 38 (expression -> VARIABLE .)
+    INT             reduce using rule 38 (expression -> VARIABLE .)
+    FLOAT           reduce using rule 38 (expression -> VARIABLE .)
+    STRING          reduce using rule 38 (expression -> VARIABLE .)
+    BOOL            reduce using rule 38 (expression -> VARIABLE .)
+    $end            reduce using rule 38 (expression -> VARIABLE .)
+
+
+state 14
+
+    (16) expression_statement -> expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    PRINTLN         reduce using rule 16 (expression_statement -> expression .)
+    PRINT           reduce using rule 16 (expression_statement -> expression .)
+    VARIABLE        reduce using rule 16 (expression_statement -> expression .)
+    VAR             reduce using rule 16 (expression_statement -> expression .)
+    LPARENTESIS     reduce using rule 16 (expression_statement -> expression .)
+    NOT             reduce using rule 16 (expression_statement -> expression .)
+    INT             reduce using rule 16 (expression_statement -> expression .)
+    FLOAT           reduce using rule 16 (expression_statement -> expression .)
+    STRING          reduce using rule 16 (expression_statement -> expression .)
+    BOOL            reduce using rule 16 (expression_statement -> expression .)
+    $end            reduce using rule 16 (expression_statement -> expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! MINUS           [ reduce using rule 16 (expression_statement -> expression .) ]
+
+
+state 15
+
+    (10) variable_declaration -> VAR . VARIABLE TYPE EQUAL expression
+    (17) data_structure_declaration -> VAR . VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY
+
+    VARIABLE        shift and go to state 42
+
+
+state 16
+
+    (32) expression -> MINUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 43
+
+state 17
+
+    (33) expression -> NOT . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 44
+
+state 18
+
+    (34) expression -> INT .
+
+    PLUS            reduce using rule 34 (expression -> INT .)
+    MINUS           reduce using rule 34 (expression -> INT .)
+    TIMES           reduce using rule 34 (expression -> INT .)
+    DIV             reduce using rule 34 (expression -> INT .)
+    MOD             reduce using rule 34 (expression -> INT .)
+    AND             reduce using rule 34 (expression -> INT .)
+    OR              reduce using rule 34 (expression -> INT .)
+    EQ              reduce using rule 34 (expression -> INT .)
+    NEQ             reduce using rule 34 (expression -> INT .)
+    LT              reduce using rule 34 (expression -> INT .)
+    GT              reduce using rule 34 (expression -> INT .)
+    LTOEQ           reduce using rule 34 (expression -> INT .)
+    GTOEQ           reduce using rule 34 (expression -> INT .)
+    PRINTLN         reduce using rule 34 (expression -> INT .)
+    PRINT           reduce using rule 34 (expression -> INT .)
+    VARIABLE        reduce using rule 34 (expression -> INT .)
+    VAR             reduce using rule 34 (expression -> INT .)
+    LPARENTESIS     reduce using rule 34 (expression -> INT .)
+    NOT             reduce using rule 34 (expression -> INT .)
+    INT             reduce using rule 34 (expression -> INT .)
+    FLOAT           reduce using rule 34 (expression -> INT .)
+    STRING          reduce using rule 34 (expression -> INT .)
+    BOOL            reduce using rule 34 (expression -> INT .)
+    $end            reduce using rule 34 (expression -> INT .)
+    RPARENTESIS     reduce using rule 34 (expression -> INT .)
+    COMMA           reduce using rule 34 (expression -> INT .)
+
+
+state 19
+
+    (35) expression -> FLOAT .
+
+    PLUS            reduce using rule 35 (expression -> FLOAT .)
+    MINUS           reduce using rule 35 (expression -> FLOAT .)
+    TIMES           reduce using rule 35 (expression -> FLOAT .)
+    DIV             reduce using rule 35 (expression -> FLOAT .)
+    MOD             reduce using rule 35 (expression -> FLOAT .)
+    AND             reduce using rule 35 (expression -> FLOAT .)
+    OR              reduce using rule 35 (expression -> FLOAT .)
+    EQ              reduce using rule 35 (expression -> FLOAT .)
+    NEQ             reduce using rule 35 (expression -> FLOAT .)
+    LT              reduce using rule 35 (expression -> FLOAT .)
+    GT              reduce using rule 35 (expression -> FLOAT .)
+    LTOEQ           reduce using rule 35 (expression -> FLOAT .)
+    GTOEQ           reduce using rule 35 (expression -> FLOAT .)
+    PRINTLN         reduce using rule 35 (expression -> FLOAT .)
+    PRINT           reduce using rule 35 (expression -> FLOAT .)
+    VARIABLE        reduce using rule 35 (expression -> FLOAT .)
+    VAR             reduce using rule 35 (expression -> FLOAT .)
+    LPARENTESIS     reduce using rule 35 (expression -> FLOAT .)
+    NOT             reduce using rule 35 (expression -> FLOAT .)
+    INT             reduce using rule 35 (expression -> FLOAT .)
+    FLOAT           reduce using rule 35 (expression -> FLOAT .)
+    STRING          reduce using rule 35 (expression -> FLOAT .)
+    BOOL            reduce using rule 35 (expression -> FLOAT .)
+    $end            reduce using rule 35 (expression -> FLOAT .)
+    RPARENTESIS     reduce using rule 35 (expression -> FLOAT .)
+    COMMA           reduce using rule 35 (expression -> FLOAT .)
+
+
+state 20
+
+    (36) expression -> STRING .
+
+    PLUS            reduce using rule 36 (expression -> STRING .)
+    MINUS           reduce using rule 36 (expression -> STRING .)
+    TIMES           reduce using rule 36 (expression -> STRING .)
+    DIV             reduce using rule 36 (expression -> STRING .)
+    MOD             reduce using rule 36 (expression -> STRING .)
+    AND             reduce using rule 36 (expression -> STRING .)
+    OR              reduce using rule 36 (expression -> STRING .)
+    EQ              reduce using rule 36 (expression -> STRING .)
+    NEQ             reduce using rule 36 (expression -> STRING .)
+    LT              reduce using rule 36 (expression -> STRING .)
+    GT              reduce using rule 36 (expression -> STRING .)
+    LTOEQ           reduce using rule 36 (expression -> STRING .)
+    GTOEQ           reduce using rule 36 (expression -> STRING .)
+    PRINTLN         reduce using rule 36 (expression -> STRING .)
+    PRINT           reduce using rule 36 (expression -> STRING .)
+    VARIABLE        reduce using rule 36 (expression -> STRING .)
+    VAR             reduce using rule 36 (expression -> STRING .)
+    LPARENTESIS     reduce using rule 36 (expression -> STRING .)
+    NOT             reduce using rule 36 (expression -> STRING .)
+    INT             reduce using rule 36 (expression -> STRING .)
+    FLOAT           reduce using rule 36 (expression -> STRING .)
+    STRING          reduce using rule 36 (expression -> STRING .)
+    BOOL            reduce using rule 36 (expression -> STRING .)
+    $end            reduce using rule 36 (expression -> STRING .)
+    RPARENTESIS     reduce using rule 36 (expression -> STRING .)
+    COMMA           reduce using rule 36 (expression -> STRING .)
+
+
+state 21
+
+    (37) expression -> BOOL .
+
+    PLUS            reduce using rule 37 (expression -> BOOL .)
+    MINUS           reduce using rule 37 (expression -> BOOL .)
+    TIMES           reduce using rule 37 (expression -> BOOL .)
+    DIV             reduce using rule 37 (expression -> BOOL .)
+    MOD             reduce using rule 37 (expression -> BOOL .)
+    AND             reduce using rule 37 (expression -> BOOL .)
+    OR              reduce using rule 37 (expression -> BOOL .)
+    EQ              reduce using rule 37 (expression -> BOOL .)
+    NEQ             reduce using rule 37 (expression -> BOOL .)
+    LT              reduce using rule 37 (expression -> BOOL .)
+    GT              reduce using rule 37 (expression -> BOOL .)
+    LTOEQ           reduce using rule 37 (expression -> BOOL .)
+    GTOEQ           reduce using rule 37 (expression -> BOOL .)
+    PRINTLN         reduce using rule 37 (expression -> BOOL .)
+    PRINT           reduce using rule 37 (expression -> BOOL .)
+    VARIABLE        reduce using rule 37 (expression -> BOOL .)
+    VAR             reduce using rule 37 (expression -> BOOL .)
+    LPARENTESIS     reduce using rule 37 (expression -> BOOL .)
+    NOT             reduce using rule 37 (expression -> BOOL .)
+    INT             reduce using rule 37 (expression -> BOOL .)
+    FLOAT           reduce using rule 37 (expression -> BOOL .)
+    STRING          reduce using rule 37 (expression -> BOOL .)
+    BOOL            reduce using rule 37 (expression -> BOOL .)
+    $end            reduce using rule 37 (expression -> BOOL .)
+    RPARENTESIS     reduce using rule 37 (expression -> BOOL .)
+    COMMA           reduce using rule 37 (expression -> BOOL .)
+
+
+state 22
+
+    (3) statement_list -> statement_list statement .
+
+    PRINTLN         reduce using rule 3 (statement_list -> statement_list statement .)
+    PRINT           reduce using rule 3 (statement_list -> statement_list statement .)
+    VARIABLE        reduce using rule 3 (statement_list -> statement_list statement .)
+    VAR             reduce using rule 3 (statement_list -> statement_list statement .)
+    LPARENTESIS     reduce using rule 3 (statement_list -> statement_list statement .)
+    MINUS           reduce using rule 3 (statement_list -> statement_list statement .)
+    NOT             reduce using rule 3 (statement_list -> statement_list statement .)
+    INT             reduce using rule 3 (statement_list -> statement_list statement .)
+    FLOAT           reduce using rule 3 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 3 (statement_list -> statement_list statement .)
+    BOOL            reduce using rule 3 (statement_list -> statement_list statement .)
+    $end            reduce using rule 3 (statement_list -> statement_list statement .)
+
+
+state 23
+
+    (13) print_statement -> PRINTLN LPARENTESIS . expression_list RPARENTESIS
+    (39) expression_list -> . expression
+    (40) expression_list -> . expression_list COMMA expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression_list                shift and go to state 45
+    expression                     shift and go to state 46
+
+state 24
+
+    (31) expression -> LPARENTESIS expression . RPARENTESIS
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    RPARENTESIS     shift and go to state 47
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+
+state 25
+
+    (38) expression -> VARIABLE .
+
+    RPARENTESIS     reduce using rule 38 (expression -> VARIABLE .)
+    PLUS            reduce using rule 38 (expression -> VARIABLE .)
+    MINUS           reduce using rule 38 (expression -> VARIABLE .)
+    TIMES           reduce using rule 38 (expression -> VARIABLE .)
+    DIV             reduce using rule 38 (expression -> VARIABLE .)
+    MOD             reduce using rule 38 (expression -> VARIABLE .)
+    AND             reduce using rule 38 (expression -> VARIABLE .)
+    OR              reduce using rule 38 (expression -> VARIABLE .)
+    EQ              reduce using rule 38 (expression -> VARIABLE .)
+    NEQ             reduce using rule 38 (expression -> VARIABLE .)
+    LT              reduce using rule 38 (expression -> VARIABLE .)
+    GT              reduce using rule 38 (expression -> VARIABLE .)
+    LTOEQ           reduce using rule 38 (expression -> VARIABLE .)
+    GTOEQ           reduce using rule 38 (expression -> VARIABLE .)
+    PRINTLN         reduce using rule 38 (expression -> VARIABLE .)
+    PRINT           reduce using rule 38 (expression -> VARIABLE .)
+    VARIABLE        reduce using rule 38 (expression -> VARIABLE .)
+    VAR             reduce using rule 38 (expression -> VARIABLE .)
+    LPARENTESIS     reduce using rule 38 (expression -> VARIABLE .)
+    NOT             reduce using rule 38 (expression -> VARIABLE .)
+    INT             reduce using rule 38 (expression -> VARIABLE .)
+    FLOAT           reduce using rule 38 (expression -> VARIABLE .)
+    STRING          reduce using rule 38 (expression -> VARIABLE .)
+    BOOL            reduce using rule 38 (expression -> VARIABLE .)
+    $end            reduce using rule 38 (expression -> VARIABLE .)
+    COMMA           reduce using rule 38 (expression -> VARIABLE .)
+
+
+state 26
+
+    (14) print_statement -> PRINT LPARENTESIS . expression_list RPARENTESIS
+    (39) expression_list -> . expression
+    (40) expression_list -> . expression_list COMMA expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression_list                shift and go to state 48
+    expression                     shift and go to state 46
+
+state 27
+
+    (15) input_statement -> VARIABLE ASSIGN . SCAN LPARENTESIS RPARENTESIS
+    (12) variable_assignment -> VARIABLE ASSIGN . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    SCAN            shift and go to state 49
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 50
+
+state 28
+
+    (11) variable_declaration -> VARIABLE DECLARE_ASSIGN . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 51
+
+state 29
+
+    (18) expression -> expression PLUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 52
+
+state 30
+
+    (19) expression -> expression MINUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 53
+
+state 31
+
+    (20) expression -> expression TIMES . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 54
+
+state 32
+
+    (21) expression -> expression DIV . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 55
+
+state 33
+
+    (22) expression -> expression MOD . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 56
+
+state 34
+
+    (23) expression -> expression AND . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 57
+
+state 35
+
+    (24) expression -> expression OR . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 58
+
+state 36
+
+    (25) expression -> expression EQ . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 59
+
+state 37
+
+    (26) expression -> expression NEQ . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 60
+
+state 38
+
+    (27) expression -> expression LT . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 61
+
+state 39
+
+    (28) expression -> expression GT . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 62
+
+state 40
+
+    (29) expression -> expression LTOEQ . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 63
+
+state 41
+
+    (30) expression -> expression GTOEQ . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 64
+
+state 42
+
+    (10) variable_declaration -> VAR VARIABLE . TYPE EQUAL expression
+    (17) data_structure_declaration -> VAR VARIABLE . ASSIGN LCORCHETE RCORCHETE ARRAY
+
+    TYPE            shift and go to state 65
+    ASSIGN          shift and go to state 66
+
+
+state 43
+
+    (32) expression -> MINUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 32 (expression -> MINUS expression .)
+    MINUS           reduce using rule 32 (expression -> MINUS expression .)
+    TIMES           reduce using rule 32 (expression -> MINUS expression .)
+    DIV             reduce using rule 32 (expression -> MINUS expression .)
+    MOD             reduce using rule 32 (expression -> MINUS expression .)
+    AND             reduce using rule 32 (expression -> MINUS expression .)
+    OR              reduce using rule 32 (expression -> MINUS expression .)
+    EQ              reduce using rule 32 (expression -> MINUS expression .)
+    NEQ             reduce using rule 32 (expression -> MINUS expression .)
+    LT              reduce using rule 32 (expression -> MINUS expression .)
+    GT              reduce using rule 32 (expression -> MINUS expression .)
+    LTOEQ           reduce using rule 32 (expression -> MINUS expression .)
+    GTOEQ           reduce using rule 32 (expression -> MINUS expression .)
+    PRINTLN         reduce using rule 32 (expression -> MINUS expression .)
+    PRINT           reduce using rule 32 (expression -> MINUS expression .)
+    VARIABLE        reduce using rule 32 (expression -> MINUS expression .)
+    VAR             reduce using rule 32 (expression -> MINUS expression .)
+    LPARENTESIS     reduce using rule 32 (expression -> MINUS expression .)
+    NOT             reduce using rule 32 (expression -> MINUS expression .)
+    INT             reduce using rule 32 (expression -> MINUS expression .)
+    FLOAT           reduce using rule 32 (expression -> MINUS expression .)
+    STRING          reduce using rule 32 (expression -> MINUS expression .)
+    BOOL            reduce using rule 32 (expression -> MINUS expression .)
+    $end            reduce using rule 32 (expression -> MINUS expression .)
+    RPARENTESIS     reduce using rule 32 (expression -> MINUS expression .)
+    COMMA           reduce using rule 32 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! DIV             [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 44
+
+    (33) expression -> NOT expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 33 (expression -> NOT expression .)
+    MINUS           reduce using rule 33 (expression -> NOT expression .)
+    TIMES           reduce using rule 33 (expression -> NOT expression .)
+    DIV             reduce using rule 33 (expression -> NOT expression .)
+    MOD             reduce using rule 33 (expression -> NOT expression .)
+    AND             reduce using rule 33 (expression -> NOT expression .)
+    OR              reduce using rule 33 (expression -> NOT expression .)
+    EQ              reduce using rule 33 (expression -> NOT expression .)
+    NEQ             reduce using rule 33 (expression -> NOT expression .)
+    LT              reduce using rule 33 (expression -> NOT expression .)
+    GT              reduce using rule 33 (expression -> NOT expression .)
+    LTOEQ           reduce using rule 33 (expression -> NOT expression .)
+    GTOEQ           reduce using rule 33 (expression -> NOT expression .)
+    PRINTLN         reduce using rule 33 (expression -> NOT expression .)
+    PRINT           reduce using rule 33 (expression -> NOT expression .)
+    VARIABLE        reduce using rule 33 (expression -> NOT expression .)
+    VAR             reduce using rule 33 (expression -> NOT expression .)
+    LPARENTESIS     reduce using rule 33 (expression -> NOT expression .)
+    NOT             reduce using rule 33 (expression -> NOT expression .)
+    INT             reduce using rule 33 (expression -> NOT expression .)
+    FLOAT           reduce using rule 33 (expression -> NOT expression .)
+    STRING          reduce using rule 33 (expression -> NOT expression .)
+    BOOL            reduce using rule 33 (expression -> NOT expression .)
+    $end            reduce using rule 33 (expression -> NOT expression .)
+    RPARENTESIS     reduce using rule 33 (expression -> NOT expression .)
+    COMMA           reduce using rule 33 (expression -> NOT expression .)
+
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! DIV             [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 45
+
+    (13) print_statement -> PRINTLN LPARENTESIS expression_list . RPARENTESIS
+    (40) expression_list -> expression_list . COMMA expression
+
+    RPARENTESIS     shift and go to state 67
+    COMMA           shift and go to state 68
+
+
+state 46
+
+    (39) expression_list -> expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    RPARENTESIS     reduce using rule 39 (expression_list -> expression .)
+    COMMA           reduce using rule 39 (expression_list -> expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+
+state 47
+
+    (31) expression -> LPARENTESIS expression RPARENTESIS .
+
+    PLUS            reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    MINUS           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    TIMES           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    DIV             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    MOD             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    AND             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    OR              reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    EQ              reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    NEQ             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    LT              reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    GT              reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    LTOEQ           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    GTOEQ           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    PRINTLN         reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    PRINT           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    VARIABLE        reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    VAR             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    LPARENTESIS     reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    NOT             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    INT             reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    FLOAT           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    STRING          reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    BOOL            reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    $end            reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    RPARENTESIS     reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+    COMMA           reduce using rule 31 (expression -> LPARENTESIS expression RPARENTESIS .)
+
+
+state 48
+
+    (14) print_statement -> PRINT LPARENTESIS expression_list . RPARENTESIS
+    (40) expression_list -> expression_list . COMMA expression
+
+    RPARENTESIS     shift and go to state 69
+    COMMA           shift and go to state 68
+
+
+state 49
+
+    (15) input_statement -> VARIABLE ASSIGN SCAN . LPARENTESIS RPARENTESIS
+
+    LPARENTESIS     shift and go to state 70
+
+
+state 50
+
+    (12) variable_assignment -> VARIABLE ASSIGN expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    PRINTLN         reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    PRINT           reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    VARIABLE        reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    VAR             reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    LPARENTESIS     reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    NOT             reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    INT             reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    FLOAT           reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    STRING          reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    BOOL            reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    $end            reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! MINUS           [ reduce using rule 12 (variable_assignment -> VARIABLE ASSIGN expression .) ]
+
+
+state 51
+
+    (11) variable_declaration -> VARIABLE DECLARE_ASSIGN expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    PRINTLN         reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    PRINT           reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    VARIABLE        reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    VAR             reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    LPARENTESIS     reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    NOT             reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    INT             reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    FLOAT           reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    STRING          reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    BOOL            reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    $end            reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! MINUS           [ reduce using rule 11 (variable_declaration -> VARIABLE DECLARE_ASSIGN expression .) ]
+
+
+state 52
+
+    (18) expression -> expression PLUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 18 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 18 (expression -> expression PLUS expression .)
+    AND             reduce using rule 18 (expression -> expression PLUS expression .)
+    OR              reduce using rule 18 (expression -> expression PLUS expression .)
+    EQ              reduce using rule 18 (expression -> expression PLUS expression .)
+    NEQ             reduce using rule 18 (expression -> expression PLUS expression .)
+    LT              reduce using rule 18 (expression -> expression PLUS expression .)
+    GT              reduce using rule 18 (expression -> expression PLUS expression .)
+    LTOEQ           reduce using rule 18 (expression -> expression PLUS expression .)
+    GTOEQ           reduce using rule 18 (expression -> expression PLUS expression .)
+    PRINTLN         reduce using rule 18 (expression -> expression PLUS expression .)
+    PRINT           reduce using rule 18 (expression -> expression PLUS expression .)
+    VARIABLE        reduce using rule 18 (expression -> expression PLUS expression .)
+    VAR             reduce using rule 18 (expression -> expression PLUS expression .)
+    LPARENTESIS     reduce using rule 18 (expression -> expression PLUS expression .)
+    NOT             reduce using rule 18 (expression -> expression PLUS expression .)
+    INT             reduce using rule 18 (expression -> expression PLUS expression .)
+    FLOAT           reduce using rule 18 (expression -> expression PLUS expression .)
+    STRING          reduce using rule 18 (expression -> expression PLUS expression .)
+    BOOL            reduce using rule 18 (expression -> expression PLUS expression .)
+    $end            reduce using rule 18 (expression -> expression PLUS expression .)
+    RPARENTESIS     reduce using rule 18 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 18 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! TIMES           [ reduce using rule 18 (expression -> expression PLUS expression .) ]
+  ! DIV             [ reduce using rule 18 (expression -> expression PLUS expression .) ]
+  ! MOD             [ reduce using rule 18 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 53
+
+    (19) expression -> expression MINUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 19 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 19 (expression -> expression MINUS expression .)
+    AND             reduce using rule 19 (expression -> expression MINUS expression .)
+    OR              reduce using rule 19 (expression -> expression MINUS expression .)
+    EQ              reduce using rule 19 (expression -> expression MINUS expression .)
+    NEQ             reduce using rule 19 (expression -> expression MINUS expression .)
+    LT              reduce using rule 19 (expression -> expression MINUS expression .)
+    GT              reduce using rule 19 (expression -> expression MINUS expression .)
+    LTOEQ           reduce using rule 19 (expression -> expression MINUS expression .)
+    GTOEQ           reduce using rule 19 (expression -> expression MINUS expression .)
+    PRINTLN         reduce using rule 19 (expression -> expression MINUS expression .)
+    PRINT           reduce using rule 19 (expression -> expression MINUS expression .)
+    VARIABLE        reduce using rule 19 (expression -> expression MINUS expression .)
+    VAR             reduce using rule 19 (expression -> expression MINUS expression .)
+    LPARENTESIS     reduce using rule 19 (expression -> expression MINUS expression .)
+    NOT             reduce using rule 19 (expression -> expression MINUS expression .)
+    INT             reduce using rule 19 (expression -> expression MINUS expression .)
+    FLOAT           reduce using rule 19 (expression -> expression MINUS expression .)
+    STRING          reduce using rule 19 (expression -> expression MINUS expression .)
+    BOOL            reduce using rule 19 (expression -> expression MINUS expression .)
+    $end            reduce using rule 19 (expression -> expression MINUS expression .)
+    RPARENTESIS     reduce using rule 19 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 19 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! TIMES           [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! DIV             [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! MOD             [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 54
+
+    (20) expression -> expression TIMES expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 20 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 20 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 20 (expression -> expression TIMES expression .)
+    DIV             reduce using rule 20 (expression -> expression TIMES expression .)
+    MOD             reduce using rule 20 (expression -> expression TIMES expression .)
+    AND             reduce using rule 20 (expression -> expression TIMES expression .)
+    OR              reduce using rule 20 (expression -> expression TIMES expression .)
+    EQ              reduce using rule 20 (expression -> expression TIMES expression .)
+    NEQ             reduce using rule 20 (expression -> expression TIMES expression .)
+    LT              reduce using rule 20 (expression -> expression TIMES expression .)
+    GT              reduce using rule 20 (expression -> expression TIMES expression .)
+    LTOEQ           reduce using rule 20 (expression -> expression TIMES expression .)
+    GTOEQ           reduce using rule 20 (expression -> expression TIMES expression .)
+    PRINTLN         reduce using rule 20 (expression -> expression TIMES expression .)
+    PRINT           reduce using rule 20 (expression -> expression TIMES expression .)
+    VARIABLE        reduce using rule 20 (expression -> expression TIMES expression .)
+    VAR             reduce using rule 20 (expression -> expression TIMES expression .)
+    LPARENTESIS     reduce using rule 20 (expression -> expression TIMES expression .)
+    NOT             reduce using rule 20 (expression -> expression TIMES expression .)
+    INT             reduce using rule 20 (expression -> expression TIMES expression .)
+    FLOAT           reduce using rule 20 (expression -> expression TIMES expression .)
+    STRING          reduce using rule 20 (expression -> expression TIMES expression .)
+    BOOL            reduce using rule 20 (expression -> expression TIMES expression .)
+    $end            reduce using rule 20 (expression -> expression TIMES expression .)
+    RPARENTESIS     reduce using rule 20 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 20 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! DIV             [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 55
+
+    (21) expression -> expression DIV expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 21 (expression -> expression DIV expression .)
+    MINUS           reduce using rule 21 (expression -> expression DIV expression .)
+    TIMES           reduce using rule 21 (expression -> expression DIV expression .)
+    DIV             reduce using rule 21 (expression -> expression DIV expression .)
+    MOD             reduce using rule 21 (expression -> expression DIV expression .)
+    AND             reduce using rule 21 (expression -> expression DIV expression .)
+    OR              reduce using rule 21 (expression -> expression DIV expression .)
+    EQ              reduce using rule 21 (expression -> expression DIV expression .)
+    NEQ             reduce using rule 21 (expression -> expression DIV expression .)
+    LT              reduce using rule 21 (expression -> expression DIV expression .)
+    GT              reduce using rule 21 (expression -> expression DIV expression .)
+    LTOEQ           reduce using rule 21 (expression -> expression DIV expression .)
+    GTOEQ           reduce using rule 21 (expression -> expression DIV expression .)
+    PRINTLN         reduce using rule 21 (expression -> expression DIV expression .)
+    PRINT           reduce using rule 21 (expression -> expression DIV expression .)
+    VARIABLE        reduce using rule 21 (expression -> expression DIV expression .)
+    VAR             reduce using rule 21 (expression -> expression DIV expression .)
+    LPARENTESIS     reduce using rule 21 (expression -> expression DIV expression .)
+    NOT             reduce using rule 21 (expression -> expression DIV expression .)
+    INT             reduce using rule 21 (expression -> expression DIV expression .)
+    FLOAT           reduce using rule 21 (expression -> expression DIV expression .)
+    STRING          reduce using rule 21 (expression -> expression DIV expression .)
+    BOOL            reduce using rule 21 (expression -> expression DIV expression .)
+    $end            reduce using rule 21 (expression -> expression DIV expression .)
+    RPARENTESIS     reduce using rule 21 (expression -> expression DIV expression .)
+    COMMA           reduce using rule 21 (expression -> expression DIV expression .)
+
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! DIV             [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 56
+
+    (22) expression -> expression MOD expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    PLUS            reduce using rule 22 (expression -> expression MOD expression .)
+    MINUS           reduce using rule 22 (expression -> expression MOD expression .)
+    TIMES           reduce using rule 22 (expression -> expression MOD expression .)
+    DIV             reduce using rule 22 (expression -> expression MOD expression .)
+    MOD             reduce using rule 22 (expression -> expression MOD expression .)
+    AND             reduce using rule 22 (expression -> expression MOD expression .)
+    OR              reduce using rule 22 (expression -> expression MOD expression .)
+    EQ              reduce using rule 22 (expression -> expression MOD expression .)
+    NEQ             reduce using rule 22 (expression -> expression MOD expression .)
+    LT              reduce using rule 22 (expression -> expression MOD expression .)
+    GT              reduce using rule 22 (expression -> expression MOD expression .)
+    LTOEQ           reduce using rule 22 (expression -> expression MOD expression .)
+    GTOEQ           reduce using rule 22 (expression -> expression MOD expression .)
+    PRINTLN         reduce using rule 22 (expression -> expression MOD expression .)
+    PRINT           reduce using rule 22 (expression -> expression MOD expression .)
+    VARIABLE        reduce using rule 22 (expression -> expression MOD expression .)
+    VAR             reduce using rule 22 (expression -> expression MOD expression .)
+    LPARENTESIS     reduce using rule 22 (expression -> expression MOD expression .)
+    NOT             reduce using rule 22 (expression -> expression MOD expression .)
+    INT             reduce using rule 22 (expression -> expression MOD expression .)
+    FLOAT           reduce using rule 22 (expression -> expression MOD expression .)
+    STRING          reduce using rule 22 (expression -> expression MOD expression .)
+    BOOL            reduce using rule 22 (expression -> expression MOD expression .)
+    $end            reduce using rule 22 (expression -> expression MOD expression .)
+    RPARENTESIS     reduce using rule 22 (expression -> expression MOD expression .)
+    COMMA           reduce using rule 22 (expression -> expression MOD expression .)
+
+  ! PLUS            [ shift and go to state 29 ]
+  ! MINUS           [ shift and go to state 30 ]
+  ! TIMES           [ shift and go to state 31 ]
+  ! DIV             [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 57
+
+    (23) expression -> expression AND expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 23 (expression -> expression AND expression .)
+    OR              reduce using rule 23 (expression -> expression AND expression .)
+    PRINTLN         reduce using rule 23 (expression -> expression AND expression .)
+    PRINT           reduce using rule 23 (expression -> expression AND expression .)
+    VARIABLE        reduce using rule 23 (expression -> expression AND expression .)
+    VAR             reduce using rule 23 (expression -> expression AND expression .)
+    LPARENTESIS     reduce using rule 23 (expression -> expression AND expression .)
+    NOT             reduce using rule 23 (expression -> expression AND expression .)
+    INT             reduce using rule 23 (expression -> expression AND expression .)
+    FLOAT           reduce using rule 23 (expression -> expression AND expression .)
+    STRING          reduce using rule 23 (expression -> expression AND expression .)
+    BOOL            reduce using rule 23 (expression -> expression AND expression .)
+    $end            reduce using rule 23 (expression -> expression AND expression .)
+    RPARENTESIS     reduce using rule 23 (expression -> expression AND expression .)
+    COMMA           reduce using rule 23 (expression -> expression AND expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! PLUS            [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! MINUS           [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! TIMES           [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! DIV             [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! MOD             [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! EQ              [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! NEQ             [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! LT              [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! GT              [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! LTOEQ           [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! GTOEQ           [ reduce using rule 23 (expression -> expression AND expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 58
+
+    (24) expression -> expression OR expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    OR              reduce using rule 24 (expression -> expression OR expression .)
+    PRINTLN         reduce using rule 24 (expression -> expression OR expression .)
+    PRINT           reduce using rule 24 (expression -> expression OR expression .)
+    VARIABLE        reduce using rule 24 (expression -> expression OR expression .)
+    VAR             reduce using rule 24 (expression -> expression OR expression .)
+    LPARENTESIS     reduce using rule 24 (expression -> expression OR expression .)
+    NOT             reduce using rule 24 (expression -> expression OR expression .)
+    INT             reduce using rule 24 (expression -> expression OR expression .)
+    FLOAT           reduce using rule 24 (expression -> expression OR expression .)
+    STRING          reduce using rule 24 (expression -> expression OR expression .)
+    BOOL            reduce using rule 24 (expression -> expression OR expression .)
+    $end            reduce using rule 24 (expression -> expression OR expression .)
+    RPARENTESIS     reduce using rule 24 (expression -> expression OR expression .)
+    COMMA           reduce using rule 24 (expression -> expression OR expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! PLUS            [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! MINUS           [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! TIMES           [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! DIV             [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! MOD             [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! AND             [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! EQ              [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! NEQ             [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! LT              [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! GT              [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! LTOEQ           [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! GTOEQ           [ reduce using rule 24 (expression -> expression OR expression .) ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 59
+
+    (25) expression -> expression EQ expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 25 (expression -> expression EQ expression .)
+    OR              reduce using rule 25 (expression -> expression EQ expression .)
+    EQ              reduce using rule 25 (expression -> expression EQ expression .)
+    NEQ             reduce using rule 25 (expression -> expression EQ expression .)
+    LT              reduce using rule 25 (expression -> expression EQ expression .)
+    GT              reduce using rule 25 (expression -> expression EQ expression .)
+    LTOEQ           reduce using rule 25 (expression -> expression EQ expression .)
+    GTOEQ           reduce using rule 25 (expression -> expression EQ expression .)
+    PRINTLN         reduce using rule 25 (expression -> expression EQ expression .)
+    PRINT           reduce using rule 25 (expression -> expression EQ expression .)
+    VARIABLE        reduce using rule 25 (expression -> expression EQ expression .)
+    VAR             reduce using rule 25 (expression -> expression EQ expression .)
+    LPARENTESIS     reduce using rule 25 (expression -> expression EQ expression .)
+    NOT             reduce using rule 25 (expression -> expression EQ expression .)
+    INT             reduce using rule 25 (expression -> expression EQ expression .)
+    FLOAT           reduce using rule 25 (expression -> expression EQ expression .)
+    STRING          reduce using rule 25 (expression -> expression EQ expression .)
+    BOOL            reduce using rule 25 (expression -> expression EQ expression .)
+    $end            reduce using rule 25 (expression -> expression EQ expression .)
+    RPARENTESIS     reduce using rule 25 (expression -> expression EQ expression .)
+    COMMA           reduce using rule 25 (expression -> expression EQ expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 25 (expression -> expression EQ expression .) ]
+  ! MINUS           [ reduce using rule 25 (expression -> expression EQ expression .) ]
+  ! TIMES           [ reduce using rule 25 (expression -> expression EQ expression .) ]
+  ! DIV             [ reduce using rule 25 (expression -> expression EQ expression .) ]
+  ! MOD             [ reduce using rule 25 (expression -> expression EQ expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 60
+
+    (26) expression -> expression NEQ expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 26 (expression -> expression NEQ expression .)
+    OR              reduce using rule 26 (expression -> expression NEQ expression .)
+    EQ              reduce using rule 26 (expression -> expression NEQ expression .)
+    NEQ             reduce using rule 26 (expression -> expression NEQ expression .)
+    LT              reduce using rule 26 (expression -> expression NEQ expression .)
+    GT              reduce using rule 26 (expression -> expression NEQ expression .)
+    LTOEQ           reduce using rule 26 (expression -> expression NEQ expression .)
+    GTOEQ           reduce using rule 26 (expression -> expression NEQ expression .)
+    PRINTLN         reduce using rule 26 (expression -> expression NEQ expression .)
+    PRINT           reduce using rule 26 (expression -> expression NEQ expression .)
+    VARIABLE        reduce using rule 26 (expression -> expression NEQ expression .)
+    VAR             reduce using rule 26 (expression -> expression NEQ expression .)
+    LPARENTESIS     reduce using rule 26 (expression -> expression NEQ expression .)
+    NOT             reduce using rule 26 (expression -> expression NEQ expression .)
+    INT             reduce using rule 26 (expression -> expression NEQ expression .)
+    FLOAT           reduce using rule 26 (expression -> expression NEQ expression .)
+    STRING          reduce using rule 26 (expression -> expression NEQ expression .)
+    BOOL            reduce using rule 26 (expression -> expression NEQ expression .)
+    $end            reduce using rule 26 (expression -> expression NEQ expression .)
+    RPARENTESIS     reduce using rule 26 (expression -> expression NEQ expression .)
+    COMMA           reduce using rule 26 (expression -> expression NEQ expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 26 (expression -> expression NEQ expression .) ]
+  ! MINUS           [ reduce using rule 26 (expression -> expression NEQ expression .) ]
+  ! TIMES           [ reduce using rule 26 (expression -> expression NEQ expression .) ]
+  ! DIV             [ reduce using rule 26 (expression -> expression NEQ expression .) ]
+  ! MOD             [ reduce using rule 26 (expression -> expression NEQ expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 61
+
+    (27) expression -> expression LT expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 27 (expression -> expression LT expression .)
+    OR              reduce using rule 27 (expression -> expression LT expression .)
+    EQ              reduce using rule 27 (expression -> expression LT expression .)
+    NEQ             reduce using rule 27 (expression -> expression LT expression .)
+    LT              reduce using rule 27 (expression -> expression LT expression .)
+    GT              reduce using rule 27 (expression -> expression LT expression .)
+    LTOEQ           reduce using rule 27 (expression -> expression LT expression .)
+    GTOEQ           reduce using rule 27 (expression -> expression LT expression .)
+    PRINTLN         reduce using rule 27 (expression -> expression LT expression .)
+    PRINT           reduce using rule 27 (expression -> expression LT expression .)
+    VARIABLE        reduce using rule 27 (expression -> expression LT expression .)
+    VAR             reduce using rule 27 (expression -> expression LT expression .)
+    LPARENTESIS     reduce using rule 27 (expression -> expression LT expression .)
+    NOT             reduce using rule 27 (expression -> expression LT expression .)
+    INT             reduce using rule 27 (expression -> expression LT expression .)
+    FLOAT           reduce using rule 27 (expression -> expression LT expression .)
+    STRING          reduce using rule 27 (expression -> expression LT expression .)
+    BOOL            reduce using rule 27 (expression -> expression LT expression .)
+    $end            reduce using rule 27 (expression -> expression LT expression .)
+    RPARENTESIS     reduce using rule 27 (expression -> expression LT expression .)
+    COMMA           reduce using rule 27 (expression -> expression LT expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 27 (expression -> expression LT expression .) ]
+  ! MINUS           [ reduce using rule 27 (expression -> expression LT expression .) ]
+  ! TIMES           [ reduce using rule 27 (expression -> expression LT expression .) ]
+  ! DIV             [ reduce using rule 27 (expression -> expression LT expression .) ]
+  ! MOD             [ reduce using rule 27 (expression -> expression LT expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 62
+
+    (28) expression -> expression GT expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 28 (expression -> expression GT expression .)
+    OR              reduce using rule 28 (expression -> expression GT expression .)
+    EQ              reduce using rule 28 (expression -> expression GT expression .)
+    NEQ             reduce using rule 28 (expression -> expression GT expression .)
+    LT              reduce using rule 28 (expression -> expression GT expression .)
+    GT              reduce using rule 28 (expression -> expression GT expression .)
+    LTOEQ           reduce using rule 28 (expression -> expression GT expression .)
+    GTOEQ           reduce using rule 28 (expression -> expression GT expression .)
+    PRINTLN         reduce using rule 28 (expression -> expression GT expression .)
+    PRINT           reduce using rule 28 (expression -> expression GT expression .)
+    VARIABLE        reduce using rule 28 (expression -> expression GT expression .)
+    VAR             reduce using rule 28 (expression -> expression GT expression .)
+    LPARENTESIS     reduce using rule 28 (expression -> expression GT expression .)
+    NOT             reduce using rule 28 (expression -> expression GT expression .)
+    INT             reduce using rule 28 (expression -> expression GT expression .)
+    FLOAT           reduce using rule 28 (expression -> expression GT expression .)
+    STRING          reduce using rule 28 (expression -> expression GT expression .)
+    BOOL            reduce using rule 28 (expression -> expression GT expression .)
+    $end            reduce using rule 28 (expression -> expression GT expression .)
+    RPARENTESIS     reduce using rule 28 (expression -> expression GT expression .)
+    COMMA           reduce using rule 28 (expression -> expression GT expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 28 (expression -> expression GT expression .) ]
+  ! MINUS           [ reduce using rule 28 (expression -> expression GT expression .) ]
+  ! TIMES           [ reduce using rule 28 (expression -> expression GT expression .) ]
+  ! DIV             [ reduce using rule 28 (expression -> expression GT expression .) ]
+  ! MOD             [ reduce using rule 28 (expression -> expression GT expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 63
+
+    (29) expression -> expression LTOEQ expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 29 (expression -> expression LTOEQ expression .)
+    OR              reduce using rule 29 (expression -> expression LTOEQ expression .)
+    EQ              reduce using rule 29 (expression -> expression LTOEQ expression .)
+    NEQ             reduce using rule 29 (expression -> expression LTOEQ expression .)
+    LT              reduce using rule 29 (expression -> expression LTOEQ expression .)
+    GT              reduce using rule 29 (expression -> expression LTOEQ expression .)
+    LTOEQ           reduce using rule 29 (expression -> expression LTOEQ expression .)
+    GTOEQ           reduce using rule 29 (expression -> expression LTOEQ expression .)
+    PRINTLN         reduce using rule 29 (expression -> expression LTOEQ expression .)
+    PRINT           reduce using rule 29 (expression -> expression LTOEQ expression .)
+    VARIABLE        reduce using rule 29 (expression -> expression LTOEQ expression .)
+    VAR             reduce using rule 29 (expression -> expression LTOEQ expression .)
+    LPARENTESIS     reduce using rule 29 (expression -> expression LTOEQ expression .)
+    NOT             reduce using rule 29 (expression -> expression LTOEQ expression .)
+    INT             reduce using rule 29 (expression -> expression LTOEQ expression .)
+    FLOAT           reduce using rule 29 (expression -> expression LTOEQ expression .)
+    STRING          reduce using rule 29 (expression -> expression LTOEQ expression .)
+    BOOL            reduce using rule 29 (expression -> expression LTOEQ expression .)
+    $end            reduce using rule 29 (expression -> expression LTOEQ expression .)
+    RPARENTESIS     reduce using rule 29 (expression -> expression LTOEQ expression .)
+    COMMA           reduce using rule 29 (expression -> expression LTOEQ expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 29 (expression -> expression LTOEQ expression .) ]
+  ! MINUS           [ reduce using rule 29 (expression -> expression LTOEQ expression .) ]
+  ! TIMES           [ reduce using rule 29 (expression -> expression LTOEQ expression .) ]
+  ! DIV             [ reduce using rule 29 (expression -> expression LTOEQ expression .) ]
+  ! MOD             [ reduce using rule 29 (expression -> expression LTOEQ expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 64
+
+    (30) expression -> expression GTOEQ expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    AND             reduce using rule 30 (expression -> expression GTOEQ expression .)
+    OR              reduce using rule 30 (expression -> expression GTOEQ expression .)
+    EQ              reduce using rule 30 (expression -> expression GTOEQ expression .)
+    NEQ             reduce using rule 30 (expression -> expression GTOEQ expression .)
+    LT              reduce using rule 30 (expression -> expression GTOEQ expression .)
+    GT              reduce using rule 30 (expression -> expression GTOEQ expression .)
+    LTOEQ           reduce using rule 30 (expression -> expression GTOEQ expression .)
+    GTOEQ           reduce using rule 30 (expression -> expression GTOEQ expression .)
+    PRINTLN         reduce using rule 30 (expression -> expression GTOEQ expression .)
+    PRINT           reduce using rule 30 (expression -> expression GTOEQ expression .)
+    VARIABLE        reduce using rule 30 (expression -> expression GTOEQ expression .)
+    VAR             reduce using rule 30 (expression -> expression GTOEQ expression .)
+    LPARENTESIS     reduce using rule 30 (expression -> expression GTOEQ expression .)
+    NOT             reduce using rule 30 (expression -> expression GTOEQ expression .)
+    INT             reduce using rule 30 (expression -> expression GTOEQ expression .)
+    FLOAT           reduce using rule 30 (expression -> expression GTOEQ expression .)
+    STRING          reduce using rule 30 (expression -> expression GTOEQ expression .)
+    BOOL            reduce using rule 30 (expression -> expression GTOEQ expression .)
+    $end            reduce using rule 30 (expression -> expression GTOEQ expression .)
+    RPARENTESIS     reduce using rule 30 (expression -> expression GTOEQ expression .)
+    COMMA           reduce using rule 30 (expression -> expression GTOEQ expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+
+  ! PLUS            [ reduce using rule 30 (expression -> expression GTOEQ expression .) ]
+  ! MINUS           [ reduce using rule 30 (expression -> expression GTOEQ expression .) ]
+  ! TIMES           [ reduce using rule 30 (expression -> expression GTOEQ expression .) ]
+  ! DIV             [ reduce using rule 30 (expression -> expression GTOEQ expression .) ]
+  ! MOD             [ reduce using rule 30 (expression -> expression GTOEQ expression .) ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NEQ             [ shift and go to state 37 ]
+  ! LT              [ shift and go to state 38 ]
+  ! GT              [ shift and go to state 39 ]
+  ! LTOEQ           [ shift and go to state 40 ]
+  ! GTOEQ           [ shift and go to state 41 ]
+
+
+state 65
+
+    (10) variable_declaration -> VAR VARIABLE TYPE . EQUAL expression
+
+    EQUAL           shift and go to state 71
+
+
+state 66
+
+    (17) data_structure_declaration -> VAR VARIABLE ASSIGN . LCORCHETE RCORCHETE ARRAY
+
+    LCORCHETE       shift and go to state 72
+
+
+state 67
+
+    (13) print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .
+
+    PRINTLN         reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    PRINT           reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    VARIABLE        reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    VAR             reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    LPARENTESIS     reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    MINUS           reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    NOT             reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    INT             reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    FLOAT           reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    STRING          reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    BOOL            reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+    $end            reduce using rule 13 (print_statement -> PRINTLN LPARENTESIS expression_list RPARENTESIS .)
+
+
+state 68
+
+    (40) expression_list -> expression_list COMMA . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 73
+
+state 69
+
+    (14) print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .
+
+    PRINTLN         reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    PRINT           reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    VARIABLE        reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    VAR             reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    LPARENTESIS     reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    MINUS           reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    NOT             reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    INT             reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    FLOAT           reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    STRING          reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    BOOL            reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+    $end            reduce using rule 14 (print_statement -> PRINT LPARENTESIS expression_list RPARENTESIS .)
+
+
+state 70
+
+    (15) input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS . RPARENTESIS
+
+    RPARENTESIS     shift and go to state 74
+
+
+state 71
+
+    (10) variable_declaration -> VAR VARIABLE TYPE EQUAL . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIV expression
+    (22) expression -> . expression MOD expression
+    (23) expression -> . expression AND expression
+    (24) expression -> . expression OR expression
+    (25) expression -> . expression EQ expression
+    (26) expression -> . expression NEQ expression
+    (27) expression -> . expression LT expression
+    (28) expression -> . expression GT expression
+    (29) expression -> . expression LTOEQ expression
+    (30) expression -> . expression GTOEQ expression
+    (31) expression -> . LPARENTESIS expression RPARENTESIS
+    (32) expression -> . MINUS expression
+    (33) expression -> . NOT expression
+    (34) expression -> . INT
+    (35) expression -> . FLOAT
+    (36) expression -> . STRING
+    (37) expression -> . BOOL
+    (38) expression -> . VARIABLE
+
+    LPARENTESIS     shift and go to state 11
+    MINUS           shift and go to state 16
+    NOT             shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VARIABLE        shift and go to state 25
+
+    expression                     shift and go to state 75
+
+state 72
+
+    (17) data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE . RCORCHETE ARRAY
+
+    RCORCHETE       shift and go to state 76
+
+
+state 73
+
+    (40) expression_list -> expression_list COMMA expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+    RPARENTESIS     reduce using rule 40 (expression_list -> expression_list COMMA expression .)
+    COMMA           reduce using rule 40 (expression_list -> expression_list COMMA expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+
+state 74
+
+    (15) input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .
+
+    PRINTLN         reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    PRINT           reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    VARIABLE        reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    VAR             reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    LPARENTESIS     reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    MINUS           reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    NOT             reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    INT             reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    FLOAT           reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    STRING          reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    BOOL            reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+    $end            reduce using rule 15 (input_statement -> VARIABLE ASSIGN SCAN LPARENTESIS RPARENTESIS .)
+
+
+state 75
+
+    (10) variable_declaration -> VAR VARIABLE TYPE EQUAL expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIV expression
+    (22) expression -> expression . MOD expression
+    (23) expression -> expression . AND expression
+    (24) expression -> expression . OR expression
+    (25) expression -> expression . EQ expression
+    (26) expression -> expression . NEQ expression
+    (27) expression -> expression . LT expression
+    (28) expression -> expression . GT expression
+    (29) expression -> expression . LTOEQ expression
+    (30) expression -> expression . GTOEQ expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    PRINTLN         reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    PRINT           reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    VARIABLE        reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    VAR             reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    LPARENTESIS     reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    NOT             reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    INT             reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    FLOAT           reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    STRING          reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    BOOL            reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    $end            reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .)
+    PLUS            shift and go to state 29
+    MINUS           shift and go to state 30
+    TIMES           shift and go to state 31
+    DIV             shift and go to state 32
+    MOD             shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+    EQ              shift and go to state 36
+    NEQ             shift and go to state 37
+    LT              shift and go to state 38
+    GT              shift and go to state 39
+    LTOEQ           shift and go to state 40
+    GTOEQ           shift and go to state 41
+
+  ! MINUS           [ reduce using rule 10 (variable_declaration -> VAR VARIABLE TYPE EQUAL expression .) ]
+
+
+state 76
+
+    (17) data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE . ARRAY
+
+    ARRAY           shift and go to state 77
+
+
+state 77
+
+    (17) data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .
+
+    PRINTLN         reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    PRINT           reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    VARIABLE        reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    VAR             reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    LPARENTESIS     reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    MINUS           reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    NOT             reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    INT             reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    FLOAT           reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    STRING          reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    BOOL            reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+    $end            reduce using rule 17 (data_structure_declaration -> VAR VARIABLE ASSIGN LCORCHETE RCORCHETE ARRAY .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MINUS in state 14 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 50 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 51 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 75 resolved as shift

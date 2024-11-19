@@ -38,6 +38,7 @@ reserved = {
     'main': 'MAIN',
     'append': 'APPEND',
     'error': 'ERROR',
+    'Scan': 'SCAN',
 }
 
 # Lista de nombres de tokens
@@ -50,7 +51,7 @@ tokens = (
              'PLUS', 'MINUS', 'TIMES', 'DIV', 'MOD',
              'EQ', 'NEQ', 'LT', 'GT', 'LTOEQ', 'GTOEQ',
              'AND', 'OR', 'NOT', 'ASSIGN', 'PLUSA',
-             'MINUSA', 'TIMESA', 'DIVA', 'MODA',
+             'MINUSA', 'TIMESA', 'DIVA', 'MODA', 'EQUAL',
              'RCORCHETE',
              'LCORCHETE',
              'RLLAVE',
@@ -82,6 +83,7 @@ tokens = (
          ) + tuple(reserved.values())
 
 # Expresiones regulares para operadores
+t_EQUAL = r'='
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
