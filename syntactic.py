@@ -16,6 +16,17 @@ precedence = (
     ('right', 'NOT'),
 )
 
+# Obtener fecha y usuario para logs
+fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
+usuario_git = "JoseMurillo2711"
+
+# Crear carpeta de logs si no existe
+if not os.path.exists("Logs"):
+    os.makedirs("Logs")
+
+# Nombre del archivo de log
+log_filename = f"Logs/sintactico-{usuario_git}-{fecha_hora}.txt"
+
 # Reglas gramaticales
 def p_program(p):
     '''program : statement_list'''
@@ -67,7 +78,6 @@ def p_data_structure_declaration(p):
     p[0] = ('array', p[2])
 
 # Expresiones
-
 def p_expression(p):
     '''expression : expression PLUS expression
                   | expression MINUS expression
@@ -112,19 +122,19 @@ def p_error(p):
         error_message = f"Syntax error at token {p.type}, line {p.lineno}"
     else:
         error_message = "Syntax error at EOF"
-    log_error(error_message)
+    log_result(error_message, is_error=True)
     print(error_message)
 
-# Generar logs de errores
-def log_error(error_message):
-    fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
-    usuario_git = "jjroldev"
-    if not os.path.exists("Logs"):
-        os.makedirs("Logs")
-    log_filename = f"Logs/sintactico-{usuario_git}-{fecha_hora}.txt"
+# Log resultados y errores
+def log_result(message, is_error=False):
+    """Registrar resultados y errores en el archivo de logs."""
+    log_type = "ERROR" if is_error else "RESULT"
     with open(log_filename, 'a') as log_file:
-        log_file.write(f"{error_message}\n")
-    print(f"Error log generado: {log_filename}")
+        log_file.write(f"[{log_type}] {message}\n")
+    if is_error:
+        print(f"Error log generado: {log_filename}")
+    else:
+        print(f"Resultado log generado: {log_filename}")
 
 # Construcción del parser
 parser = yacc.yacc()
@@ -140,8 +150,11 @@ def test_parser():
             continue
         try:
             result = parser.parse(s)
+            log_result(str(result))  # Registrar el resultado
             print(result)
         except Exception as e:
-            print(f"Error durante el análisis: {e}")
+            error_message = f"Error durante el análisis: {e}"
+            log_result(error_message, is_error=True)
+            print(error_message)
 
 test_parser()

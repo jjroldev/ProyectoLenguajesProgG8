@@ -1,0 +1,4 @@
+[RESULT] [('declare_assign', 'resultado', ('+', 5, 3))]
+[ERROR] Syntax error at token COMMA, line 41
+[RESULT] None
+[RESULT] ['println', ('+', 5, ('*', 3, ('-', 2, 1)))]
