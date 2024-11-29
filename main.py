@@ -19,6 +19,12 @@ log_filename = f"Logs/sintactico-{usuario_git}-{fecha_hora}.txt"
 def p_programa(p):
     '''programa : declaraciones'''
 
+def p_declaracion_entera_variable(p):
+    '''declaracion_entera_variable : VAR VARIABLE INT ASSIGN operaciones_aritmetica_entero'''
+
+def p_comparador_entero(p):
+    '''comparador_entero : INTV operador_relacional INTV'''
+
 def p_declaraciones(p):
     '''declaraciones : declaracion_statement
                       | declaracion_statement SALTO_LINEA declaraciones'''
@@ -35,7 +41,8 @@ def p_declaracion_stastement(p):
                             | funcion
                             | ONELINECOMMENT
                             | MULTILINECOMMENT
-                            | leer_entradas'''
+                            | leer_entradas
+                            | comparador_entero'''
 
 def p_funcion(p):
     '''funcion : FUNC MAIN LPARENTESIS RPARENTESIS LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE
@@ -98,9 +105,17 @@ def p_condiciones(p):
 def p_condicion(p):
     'condicion : VARIABLE operador_relacional valor'
 
+def p_operaciones_aritmetica_entero(p):
+    '''operaciones_aritmetica_entero : operacion_aritmetica_entero
+                                     | operacion_aritmetica_entero operador operaciones_aritmetica_entero'''
+
+def p_operacion_aritmetica_entero(p):
+    '''operacion_aritmetica_entero : INTV
+                                  | INTV operador INTV'''
+
 
 def p_declaracion_variable(p):
-    '''declaracion_variable : VAR VARIABLE type ASSIGN operacion_aritmetica
+    '''declaracion_variable : VAR VARIABLE type ASSIGN operaciones_aritmeticas
                            | VAR asignacion
                            | VAR variables type
                            | VAR VARIABLE type
@@ -108,6 +123,7 @@ def p_declaracion_variable(p):
                            | CONST VARIABLE ASSIGN operacion_aritmetica
                            | VAR LPARENTESIS SALTO_LINEA declaraciones_sencillas SALTO_LINEA RPARENTESIS
                            | CONST LPARENTESIS SALTO_LINEA declaraciones_sencillas SALTO_LINEA RPARENTESIS'''
+
 
 def p_declaracion_array(p):
     '''declaracion_array : VARIABLE DECLARE_ASSIGN ARRAY LLLAVE valores RLLAVE
