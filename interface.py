@@ -5,8 +5,8 @@ from PyQt5.QtCore import Qt
 import ply.lex as lex
 import ply.yacc as yacc
 from datetime import datetime
-from main import tokens, lexer  # Importar los tokens y lexer definidos en main.py
-from syntactic import parser  # Importar el parser definido en syntactic.py
+from lexico import tokens, lexer  # Importar los tokens y lexer definidos en lexico.py
+from main import parser  # Importar el parser definido en main.py
 
 # Crear carpeta de logs si no existe
 if not os.path.exists("Logs"):

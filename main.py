@@ -1,240 +1,227 @@
 import ply.yacc as yacc
-import ply.lex as lex
 from datetime import datetime
 import os
+from lexico import tokens
 
-# Palabras reservadas de Golang
-reserved = {
-    'break': 'BREAK',
-    'default': 'DEFAULT',
-    'func': 'FUNC',
-    'interface': 'INTERFACE',
-    'select': 'SELECT',
-    'case': 'CASE',
-    'defer': 'DEFER',
-    'go': 'GO',
-    'else': 'ELSE',
-    'goto': 'GOTO',
-    'package': 'PACKAGE',
-    'switch': 'SWITCH',
-    'const': 'CONST',
-    'fallthrough': 'FALLTHROUGH',
-    'if': 'IF',
-    'range': 'RANGE',
-    'type': 'TYPE',
-    'continue': 'CONTINUE',
-    'for': 'FOR',
-    'import': 'IMPORT',
-    'return': 'RETURN',
-    'var': 'VAR',
-    'float64': 'FLOAT64',
-    'float32': 'FLOAT32',
-    'Println': 'PRINTLN',
-    'Print': 'PRINT',
-    'Printf': 'PRINTF',
-    'Sprint': 'SPRINT',
-    'Sprintf': 'SPRINTF',
-    'Sprintln': 'SPRINTLN',
-    'main': 'MAIN',
-    'append': 'APPEND',
-    'error': 'ERROR',
-    'Scan': 'SCAN',
-}
+# Obtener fecha y usuario para logs
+fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
+usuario_git = "jjroldev"
 
-# Lista de nombres de tokens
-tokens = (
-             'VARIABLE',
-             'BOOL',
-             'STRING',
-             'INT',
-             'FLOAT',
-             'PLUS', 'MINUS', 'TIMES', 'DIV', 'MOD',
-             'EQ', 'NEQ', 'LT', 'GT', 'LTOEQ', 'GTOEQ',
-             'AND', 'OR', 'NOT', 'ASSIGN', 'PLUSA',
-             'MINUSA', 'TIMESA', 'DIVA', 'MODA', 'EQUAL',
-             'RCORCHETE',
-             'LCORCHETE',
-             'RLLAVE',
-             'LLLAVE',
-             'RPARENTESIS',
-             'LPARENTESIS',
-             'COLON',
-             'DOT',
-             'SEMICOLON',
-             'COMMA',
-             'DECLARE_ASSIGN',
-             'INCREMENTO',
-             'DECREMENTO',
-             'BITWISEAND',
-             'BITWISEOR',
-             'BITWISEXOR',
-             'BITWISECLEAR',
-             'SHIFTLEFT',
-             'SHIFTRIGHT',
-             'BITWISEANDASSIGN',
-             'BITWISEORASSIGN',
-             'BITWISEXORASSIGN',
-             'SHIFTLEFTASSIGN',
-             'SHIFTRIGHTASSIGN',
-             'ONELINECOMMENT',
-             'MULTILINECOMMENT',
-             'ARRAY',
-             'SLICE'
-         ) + tuple(reserved.values())
+# Crear carpeta de logs si no existe
+if not os.path.exists("Logs"):
+    os.makedirs("Logs")
 
-# Expresiones regulares para operadores
-t_EQUAL = r'='
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIV = r'/'
-t_MOD = r'%'
-t_EQ = r'=='
-t_NEQ = r'!='
-t_LT = r'<'
-t_GT = r'>'
-t_LTOEQ = r'<='
-t_GTOEQ = r'>='
-t_AND = r'&&'
-t_OR = r'\|\|'
-t_NOT = r'!'
-t_ASSIGN = r'='
-t_PLUSA = r'\+='
-t_MINUSA = r'-='
-t_TIMESA = r'\*='
-t_DIVA = r'/='
-t_MODA = r'%='
-t_RCORCHETE = r'\]'
-t_LCORCHETE = r'\['
-t_RLLAVE = r'}'
-t_LLLAVE = r'{'
-t_RPARENTESIS = r'\)'
-t_LPARENTESIS = r'\('
-t_COLON = r':'
-t_DOT = r'\.'
-t_SEMICOLON = r';'
-t_COMMA = r','
-t_DECLARE_ASSIGN = r':='
-t_INCREMENTO = r'\+\+'
-t_DECREMENTO = r'--'
-t_BITWISEAND = r'&'
-t_BITWISEOR = r'\|'
-t_BITWISEXOR = r'\^'
-t_BITWISECLEAR = r'&\^'
-t_SHIFTLEFT = r'<<'
-t_SHIFTRIGHT = r'>>'
-t_BITWISEANDASSIGN = r'&='
-t_BITWISEORASSIGN = r'\|='
-t_BITWISEXORASSIGN = r'\^='
-t_SHIFTLEFTASSIGN = r'<<='
-t_SHIFTRIGHTASSIGN = r'>>='
+# Nombre del archivo de log
+log_filename = f"Logs/sintactico-{usuario_git}-{fecha_hora}.txt"
+
+# Reglas gramaticales
+
+def p_programa(p):
+    '''programa : declaraciones'''
+
+def p_declaraciones(p):
+    '''declaraciones : declaracion_statement
+                      | declaracion_statement SALTO_LINEA declaraciones'''
+
+def p_declaracion_stastement(p):
+    '''declaracion_statement : declaracion_array
+                            | declaracion_mapa
+                            | declaracion_variable
+                            | imprimir
+                            | modificar_estructuras
+                            | estructuraif
+                            | estructuraif_else
+                            | estructura_for
+                            | funcion
+                            | ONELINECOMMENT
+                            | MULTILINECOMMENT
+                            | leer_entradas'''
+
+def p_funcion(p):
+    '''funcion : FUNC MAIN LPARENTESIS RPARENTESIS LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE
+              | FUNC VARIABLE LPARENTESIS RPARENTESIS LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE
+              | FUNC VARIABLE LPARENTESIS parametros RPARENTESIS LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE'''
+
+def p_parametros(p):
+    '''parametros : parametro
+                 | parametro COMMA parametros'''
+
+def p_parametro(p):
+    '''parametro : VARIABLE type'''
+
+def p_estructuraif_else(p):
+    '''estructuraif_else : estructuraif ELSE condiciones LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE'''
+
+def p_estructuraif(p):
+    '''estructuraif : IF condiciones LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE'''
+
+def p_estructura_for(p):
+    '''estructura_for : FOR VARIABLE DECLARE_ASSIGN valor SEMICOLON VARIABLE operador_logico valor SEMICOLON VARIABLE operador_modifica_variable1 LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE
+                     | FOR VARIABLE DECLARE_ASSIGN valor SEMICOLON VARIABLE operador_logico valor SEMICOLON VARIABLE operador_modifica_variable2 valor LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE
+                     | FOR VARIABLE operador_logico LLLAVE SALTO_LINEA declaraciones_tabs SALTO_LINEA RLLAVE'''
+
+def p_operador_modifica_variable1(p):
+    '''operador_modifica_variable1 : INCREMENTO
+                              | DECREMENTO'''
+
+def p_operador_modifica_variable2(p):
+    '''operador_modifica_variable2 : ASSIGN
+                              | PLUSA
+                              | MINUSA
+                              | TIMESA
+                              | DIVA
+                              | MODA'''
+
+def p_declaraciones_tabs(p):
+    '''declaraciones_tabs : declaracion_statement_tabs
+                          | declaracion_statement_tabs SALTO_LINEA declaraciones_tabs'''
 
 
-# Definición de tokens para tipos básicos
+def p_declaracion_statement_tabs(p):
+    '''declaracion_statement_tabs : TAB declaracion_array
+                            | TAB declaracion_mapa
+                            | TAB declaracion_variable
+                            | TAB imprimir
+                            | TAB modificar_estructuras
+                            | TAB estructuraif
+                            | TAB estructuraif_else
+                            | TAB estructura_for
+                            | TAB funcion
+                            | TAB ONELINECOMMENT
+                            | TAB MULTILINECOMMENT
+                            | TAB leer_entradas'''
 
-def t_ARRAY(t):
-    r'\[\d+\](int|float32|float64|string|bool|byte|rune|complex64|complex128|uintptr|any|error)'
-    return t
+def p_condiciones(p):
+    '''condiciones : condicion
+                  | condicion operador_logico condiciones'''
 
-
-def t_SLICE(t):
-    r'\[\](int|float32|float64|string|bool|byte|rune|complex64|complex128|uintptr|any|error)'
-    return t
-
-
-def t_BOOL(t):
-    r'true|false'
-    t.value = t.value == 'true'
-    return t
-
-
-def t_FLOAT(t):
-    r'-?\d+\.\d+'
-    t.value = float(t.value)
-    return t
+def p_condicion(p):
+    'condicion : VARIABLE operador_relacional valor'
 
 
-def t_INT(t):
-    r'-?[0-9]+'
-    t.value = int(t.value)
-    return t
+def p_declaracion_variable(p):
+    '''declaracion_variable : VAR VARIABLE type ASSIGN operacion_aritmetica
+                           | VAR asignacion
+                           | VAR variables type
+                           | VAR VARIABLE type
+                           | VARIABLE DECLARE_ASSIGN valor
+                           | CONST VARIABLE ASSIGN operacion_aritmetica
+                           | VAR LPARENTESIS SALTO_LINEA declaraciones_sencillas SALTO_LINEA RPARENTESIS
+                           | CONST LPARENTESIS SALTO_LINEA declaraciones_sencillas SALTO_LINEA RPARENTESIS'''
+
+def p_declaracion_array(p):
+    '''declaracion_array : VARIABLE DECLARE_ASSIGN ARRAY LLLAVE valores RLLAVE
+                        | VAR VARIABLE ASSIGN ARRAY LLLAVE valores RLLAVE'''
+
+def p_declaracion_mapa(p):
+    '''declaracion_mapa : VARIABLE DECLARE_ASSIGN MAP LLLAVE pares RLLAVE'''
+
+def p_modificar_structuras(p):
+    '''modificar_estructuras : agregar_elemento_array'''
+
+def p_pares(p):
+    '''pares : par
+             | par COMMA pares'''
+
+def p_par(p):
+    '''par : valor COLON valor'''
+
+def p_agregar_elemento_array(p):
+    '''agregar_elemento_array : ARRAYMOD ASSIGN valor'''
+
+def p_imprimir(p):
+    '''imprimir : FMT DOT PRINTLN LPARENTESIS operaciones_aritmeticas RPARENTESIS
+               | FMT DOT PRINT LPARENTESIS operaciones_aritmeticas RPARENTESIS
+               | FMT DOT PRINTF LPARENTESIS operaciones_aritmeticas RPARENTESIS'''
+
+def p_leer_entradas(p):
+    '''leer_entradas : FMT DOT SCAN LPARENTESIS parametros_scan RPARENTESIS
+                    | FMT DOT SCANLN LPARENTESIS parametros_scan RPARENTESIS
+                    | FMT DOT SCANF LPARENTESIS FORMATO COMMA parametros_scan RPARENTESIS'''
+
+def p_parametros_scan(p):
+    '''parametros_scan : parametro_scan
+                      | parametro_scan COMMA parametros_scan'''
+
+def p_parametro_scan(p):
+    '''parametro_scan : BITWISEAND VARIABLE'''
+
+def p_asignacion(p):
+    '''asignacion : VARIABLE ASSIGN valor'''
 
 
-def t_STRING(t):
-    r'"([^"\\]|\\["nt\\])*"'
-    return t
+def p_valores(p):
+    '''valores : valor
+              | valor COMMA valores'''
+
+def p_variables(p):
+    '''variables : VARIABLE
+                | VARIABLE COMMA variables'''
+
+def p_operacion_aritmetica(p):
+    '''operacion_aritmetica : valor
+                           | valor operador operacion_aritmetica'''
+
+def p_operaciones_aritmeticas(p):
+    '''operaciones_aritmeticas : operacion_aritmetica
+                              | operacion_aritmetica COMMA operaciones_aritmeticas'''
+
+def p_declaraciones_sencillas(p):
+    '''declaraciones_sencillas : asignacion
+                              | asignacion TAB declaraciones_sencillas'''
 
 
-def t_VARIABLE(t):
-    r'[a-zA-Z_]\w*'
-    t.type = reserved.get(t.value, 'VARIABLE')
-    return t
+def p_type(p):
+    '''type : BOOL
+            | INT
+            | FLOAT
+            | UINT
+            | STRING
+            | COMPLEX
+            | ARRAY
+            | SLICE
+            | MAP'''
 
+def p_operador(p):
+    '''operador : PLUS
+               | MINUS
+               | MOD
+               | TIMES
+               | DIV'''
 
-def t_ONELINECOMMENT(t):
-    r'//.*'
-    return t
+def p_valor(p):
+    '''valor : BOOLV
+                | INTV
+                | FLOATV
+                | UINTV
+                | STRINGV
+                | VARIABLE
+                | SLICEV'''
 
+def p_operador_relacional(p):
+    '''operador_relacional : EQ
+                           | NEQ
+                           | LT
+                           | GT
+                           | LTOEQ
+                           | GTOEQ'''
 
-def t_MULTILINECOMMENT(t):
-    r'\/\*((?!\/\*)[\s\S])*\*\/'
-    return t
+def p_operador_logico(p):
+    '''operador_logico : AND
+                       | OR'''
 
+# Error rule for syntax errors
+def p_error(p):
+    print("Syntax error in input!")
 
-# Salto de línea
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
+# Build the parser
+parser = yacc.yacc()
 
-
-# Caracteres ignorados (espacios y tabulaciones)
-t_ignore = ' \t'
-
-
-# Manejo de errores
-def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
-    t.lexer.skip(1)
-
-
-# Construcción del lexer
-lexer = lex.lex()
-
-
-def leer_archivo(nombre_archivo):
-    try:
-        with open(nombre_archivo, 'r') as archivo:
-            contenido = archivo.read()
-        return contenido
-    except FileNotFoundError:
-        print(f"El archivo {nombre_archivo} no fue encontrado.")
-        return ""
-
-
-def generar_log(tokens, usuario_git):
-    fecha_hora = datetime.now().strftime("%d-%m-%Y-%Hh%M")
-    if not os.path.exists("Logs"):
-        os.makedirs("Logs")
-    nombre_log = f"Logs/lexico-{usuario_git}-{fecha_hora}.txt"
-    with open(nombre_log, 'w') as log:
-        for token in tokens:
-            log.write(f"{token}\n")
-    print(f"Log generado: {nombre_log}")
-
-
-def procesar_archivo(nombre_archivo, usuario_git):
-    data = leer_archivo(nombre_archivo)
-    if not data:
-        return
-    lexer.input(data)
-    tokens = []
-    # TOKENIZAR
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        tokens.append(tok)
-    generar_log(tokens, usuario_git)
-
-
-procesar_archivo("algoritmo2.go", "JoseMurillo2711")
+while True:
+   try:
+       s = input('golang > ')
+   except EOFError:
+       break
+   if not s: continue
+   result = parser.parse(s)
+   print(result)
